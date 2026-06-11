@@ -1,27 +1,62 @@
 {% assign locale = include.locale | default: site.locale %}
-{% unless site.atom_feed.hide %}
-  {% assign show_atom = true %}
-{% endunless %}
-{% if site.footer.links or show_atom %}
-<div class="page__footer-follow">
-  <ul class="social-icons">
-    {% if site.data.ui-text[locale].follow_label %}
-      <li><strong>{{ site.data.ui-text[locale].follow_label }}</strong></li>
-    {% endif %}
+{% assign newsletter = site.footer.newsletter %}
+{% assign has_footer_links = false %}
+{% for link in site.footer.links %}
+  {% if link.label %}
+    {% assign has_footer_links = true %}
+  {% endif %}
+{% endfor %}
 
-    {% if site.footer.links %}
-      {% for link in site.footer.links %}
-        {% if link.label and link.url %}
-          <li><a href="{{ link.url }}" rel="nofollow noopener noreferrer{% if link.rel %} {{ link.rel }}{% endif %}"><i class="{{ link.icon | default: 'fas fa-link' }}" aria-hidden="true"></i> {{ link.label | escape_once | strip }}</a></li>
+{% if newsletter.url or has_footer_links %}
+  <div class="page__footer-main">
+    {% if newsletter.url %}
+      <div class="page__footer-newsletter">
+        {% if newsletter.label %}<h2>{{ newsletter.label | escape_once | strip }}</h2>{% endif %}
+        {% assign newsletter_action = newsletter.form_action | default: newsletter.url %}
+        {% if newsletter_action contains "://" %}
+          {% assign newsletter_action_url = newsletter_action %}
+        {% else %}
+          {% assign newsletter_action_url = newsletter_action | relative_url %}
         {% endif %}
-      {% endfor %}
+        <form class="page__footer-signup" action="{{ newsletter_action_url }}" method="{{ newsletter.method | default: 'get' }}">
+          <label class="screen-reader-text" for="footer-newsletter-email">{{ newsletter.placeholder | default: "Email address" }}</label>
+          <input id="footer-newsletter-email" type="email" name="{{ newsletter.input_name | default: 'email' }}" placeholder="{{ newsletter.placeholder | default: 'Email address' }}" autocomplete="email" required>
+          <button type="submit">{{ newsletter.button_label | default: "Sign up" | escape_once | strip }}</button>
+        </form>
+      </div>
     {% endif %}
 
-    {% unless site.atom_feed.hide %}
-      <li><a href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}"><i class="fas fa-fw fa-square-rss" aria-hidden="true"></i> {{ site.data.ui-text[locale].feed_label | default: "Feed" }}</a></li>
-    {% endunless %}
-  </ul>
-</div>
+    {% if has_footer_links %}
+      <div class="page__footer-follow">
+        <h2>Contact</h2>
+        <ul class="social-icons">
+          {% for link in site.footer.links %}
+            {% if link.label %}
+              <li>
+                {% if link.url %}
+                  <a class="page__footer-social" href="{{ link.url }}" rel="nofollow noopener noreferrer{% if link.rel %} {{ link.rel }}{% endif %}">
+                    <i class="{{ link.icon | default: 'fas fa-link' }}" aria-hidden="true"></i>
+                    <span>{{ link.label | escape_once | strip }}</span>
+                  </a>
+                {% else %}
+                  <span class="page__footer-social page__footer-social--pending" aria-disabled="true">
+                    <i class="{{ link.icon | default: 'fas fa-link' }}" aria-hidden="true"></i>
+                    <span>{{ link.label | escape_once | strip }}</span>
+                  </span>
+                {% endif %}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
 {% endif %}
 
-<div class="page__footer-copyright">&copy; {% assign site_time = site.time | date: '%Y' %}{% if site.footer.since and site_time != site.footer.since %}{{ site.footer.since }} - {% endif %}{{ site_time }} <a href="{{ site.copyright_url | default: site.url }}">{{ site.copyright | default: site.title | escape_once | strip }}</a>. {{ site.data.ui-text[locale].powered_by | default: "Powered by" }} <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">
+  &copy; {% assign site_time = site.time | date: '%Y' %}{% if site.footer.since and site_time != site.footer.since %}{{ site.footer.since }} - {% endif %}{{ site_time }}
+  <a href="{{ site.copyright_url | default: site.url }}">{{ site.copyright | default: site.title | escape_once | strip }}</a>
+  {% unless site.atom_feed.hide %}
+    &middot; <a href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}">{{ site.data.ui-text[locale].feed_label | default: "Feed" }}</a>
+  {% endunless %}
+</div>

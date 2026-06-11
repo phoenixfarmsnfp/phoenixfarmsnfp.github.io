@@ -1,0 +1,148 @@
+/* ==========================================================================
+   Phoenix Farms skin
+   ========================================================================== */
+
+/* Colors */
+$background-color: #FFFDEE !default;
+$text-color: #191101 !default;
+$muted-text-color: #777465 !default;
+$section-background-color: #777465 !default;
+$primary-color: #E2CCBB !default; // pink accent
+$accent-color: #990C1A !default; // logo red accent
+$border-color: #191101 !default;
+$footer-background-color: #191101 !default;
+$header-background-color: #191101 !default;
+$link-color: $accent-color !default;
+$link-color-hover: mix(#000, $accent-color, 25%) !default;
+$masthead-link-color: $primary-color !default;
+$masthead-link-color-hover: #fff !default;
+$navicon-link-color-hover: $primary-color !default;
+
+$button-background-color: $primary-color !default;
+$button-text-color: $text-color !default;
+$button-border-color: $primary-color !default;
+$x-large: 1360px !default;
+$max-width: 1320px !default;
+$header-font-family: Garamond, 'Noto Serif Display', Georgia, serif !default;
+$caption-font-family: $header-font-family !default;
+$border-radius: 6px !default;
+
+/* Code background - slightly darker than main background */
+$code-background-color: #f5e5e6 !default;
+$code-background-color-dark: #E2CCBB !default;
+
+/* Form elements */
+$form-background-color: #f5e5e6 !default;
+
+/* Status colors */
+$success-color: $accent-color !default;
+$warning-color: #d67f05 !default;
+$danger-color: #ee5f5b !default;
+$info-color: $accent-color !default;
+$focus-color: $primary-color !default;
+$active-color: mix(#fff, $primary-color, 80%) !default;
+
+/* Phoenix Farms syntax highlighting (warm earth tones) */
+$base00: #191101 !default;
+$base01: #2d2620 !default;
+$base02: #3f3830 !default;
+$base03: #777465 !default;
+$base04: #8a8076 !default;
+$base05: #E2CCBB !default;
+$base06: #eee5dd !default;
+$base07: #FFFDEE !default;
+$base08: #a0522d !default;
+$base09: #cd853f !default;
+$base0a: #daa520 !default;
+$base0b: $accent-color !default;
+$base0c: #20b2aa !default;
+$base0d: #4682b4 !default;
+$base0e: #9370db !default;
+$base0f: #8b4513 !default;
+
+/* Palette behavior */
+html,
+body {
+  background-color: $background-color;
+  color: $text-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $muted-text-color;
+  font-family: $header-font-family;
+}
+
+a {
+  color: $accent-color;
+}
+
+.page__footer a {
+  color: $primary-color;
+}
+
+a:hover,
+a:focus {
+  color: $link-color-hover;
+}
+
+.masthead {
+  background-color: $header-background-color;
+  color: $button-text-color;
+  border-bottom-color: $border-color;
+}
+
+.masthead .greedy-nav {
+  background: $header-background-color;
+}
+
+.masthead a,
+.masthead .site-title,
+.masthead .site-subtitle,
+.masthead .masthead__menu-item a,
+.masthead__menu-item {
+  color: $primary-color;
+}
+
+.masthead__menu-item a:hover,
+.page__footer a {
+  color: $background-color;
+}
+
+.page__footer {
+  background-color: $footer-background-color;
+  color: $button-text-color;
+}
+
+.btn {
+  background-color: $button-background-color;
+  border: 1px solid $button-border-color;
+  color: $button-text-color;
+}
+
+.btn--primary {
+  background-color: $primary-color;
+  color: $text-color;
+  border-color: $primary-color;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: mix(#000, $button-background-color, 8%);
+  color: $button-text-color;
+}
+
+.btn--primary:hover,
+.btn--primary:focus {
+  background-color: mix(#000, $primary-color, 10%);
+}
+
+.btn--inverse {
+  background-color: #fff;
+  color: $text-color;
+  border: 1px solid $button-border-color;
+}

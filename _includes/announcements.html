@@ -1,0 +1,17 @@
+{% assign announcements = page.announcements | default: layout.announcements %}
+{% if announcements %}
+  <section class="announcement-banners" aria-label="Site announcements">
+    <div class="announcement-banners__inner">
+      {% for announcement in announcements %}
+        {% if announcement.enabled != false and announcement.text %}
+          <div class="announcement-banner">
+            <p class="announcement-banner__text">{{ announcement.text | escape_once }}</p>
+            {% if announcement.url and announcement.button_label %}
+              <a class="announcement-banner__button" href="{{ announcement.url | relative_url }}">{{ announcement.button_label | escape_once }}</a>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
