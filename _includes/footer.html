@@ -1,55 +1,79 @@
 {% assign locale = include.locale | default: site.locale %}
 {% assign newsletter = site.footer.newsletter %}
 {% assign has_footer_links = false %}
-{% for link in site.footer.links %}
-  {% if link.label %}
+{% for link in site.social_links %}
+  {% if link.label and link.url or link.label and link.placeholder %}
     {% assign has_footer_links = true %}
   {% endif %}
 {% endfor %}
 
-{% if newsletter.url or has_footer_links %}
+{% if newsletter.label or site.footer.about or site.contact.email or has_footer_links %}
   <div class="page__footer-main">
-    {% if newsletter.url %}
+    {% if newsletter.label %}
       <div class="page__footer-newsletter">
-        {% if newsletter.label %}<h2>{{ newsletter.label | escape_once | strip }}</h2>{% endif %}
-        {% assign newsletter_action = newsletter.form_action | default: newsletter.url %}
-        {% if newsletter_action contains "://" %}
-          {% assign newsletter_action_url = newsletter_action %}
+        <h2>{{ newsletter.label | escape_once | strip }}</h2>
+        {% if newsletter.tally_form_id %}
+          {% capture newsletter_action_url %}https://tally.so/r/{{ newsletter.tally_form_id }}{% endcapture %}
+          {% assign newsletter_method = "get" %}
+        {% elsif newsletter.form_action %}
+          {% if newsletter.form_action contains "://" or newsletter.form_action contains "mailto:" %}
+            {% assign newsletter_action_url = newsletter.form_action %}
+          {% else %}
+            {% assign newsletter_action_url = newsletter.form_action | relative_url %}
+          {% endif %}
+          {% assign newsletter_method = newsletter.method | default: "post" %}
         {% else %}
-          {% assign newsletter_action_url = newsletter_action | relative_url %}
+          {% capture newsletter_action_url %}mailto:{{ site.contact.email }}?subject={{ newsletter.subject | default: "Newsletter signup" | url_encode }}{% endcapture %}
+          {% assign newsletter_method = "post" %}
         {% endif %}
-        <form class="page__footer-signup" action="{{ newsletter_action_url }}" method="{{ newsletter.method | default: 'get' }}">
+        <form class="page__footer-signup" action="{{ newsletter_action_url }}" method="{{ newsletter_method }}"{% if newsletter_action_url contains "mailto:" %} enctype="text/plain"{% endif %}{% if newsletter.tally_form_id %} data-tally-newsletter-form{% endif %}>
           <label class="screen-reader-text" for="footer-newsletter-email">{{ newsletter.placeholder | default: "Email address" }}</label>
           <input id="footer-newsletter-email" type="email" name="{{ newsletter.input_name | default: 'email' }}" placeholder="{{ newsletter.placeholder | default: 'Email address' }}" autocomplete="email" required>
-          <button type="submit">{{ newsletter.button_label | default: "Sign up" | escape_once | strip }}</button>
+          <button type="submit">{{ newsletter.button_label | default: "Sign-up" | escape_once | strip }}</button>
         </form>
       </div>
     {% endif %}
 
-    {% if has_footer_links %}
-      <div class="page__footer-follow">
-        <h2>Contact</h2>
-        <ul class="social-icons">
-          {% for link in site.footer.links %}
-            {% if link.label %}
+    <div class="page__footer-aside">
+      {% if site.footer.about %}
+        <section class="page__footer-about">
+          <h2><a href="{{ site.footer.about.url | relative_url }}">{{ site.footer.about.label | default: "About" }}</a></h2>
+        </section>
+      {% endif %}
+
+      {% if site.contact.email or has_footer_links %}
+        <section class="page__footer-follow">
+          <h2>{{ site.footer.contact_label | default: "Contact" }}</h2>
+          <ul class="social-icons">
+            {% if site.contact.email %}
               <li>
-                {% if link.url %}
+                <a class="page__footer-social" href="mailto:{{ site.contact.email }}">
+                  <i class="fas fa-fw fa-envelope" aria-hidden="true"></i>
+                  <span>{{ site.contact.email }}</span>
+                </a>
+              </li>
+            {% endif %}
+            {% for link in site.social_links %}
+              {% if link.label and link.url %}
+                <li>
                   <a class="page__footer-social" href="{{ link.url }}" rel="nofollow noopener noreferrer{% if link.rel %} {{ link.rel }}{% endif %}">
                     <i class="{{ link.icon | default: 'fas fa-link' }}" aria-hidden="true"></i>
                     <span>{{ link.label | escape_once | strip }}</span>
                   </a>
-                {% else %}
-                  <span class="page__footer-social page__footer-social--pending" aria-disabled="true">
+                </li>
+              {% elsif link.label and link.placeholder %}
+                <li>
+                  <span class="page__footer-social page__footer-social--pending">
                     <i class="{{ link.icon | default: 'fas fa-link' }}" aria-hidden="true"></i>
-                    <span>{{ link.label | escape_once | strip }}</span>
+                    <span>{{ link.label | escape_once | strip }} <span class="screen-reader-text">link coming soon</span></span>
                   </span>
-                {% endif %}
-              </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-      </div>
-    {% endif %}
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </section>
+      {% endif %}
+    </div>
   </div>
 {% endif %}
 

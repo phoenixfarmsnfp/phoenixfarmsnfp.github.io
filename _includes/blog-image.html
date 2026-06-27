@@ -1,0 +1,15 @@
+{% assign image_value = include.image | default: "" %}
+{% assign image_start = image_value | slice: 0 %}
+{% if image_value contains "://" %}
+  {% assign image_src = image_value %}
+{% elsif image_start == "/" %}
+  {% assign image_src = image_value | relative_url %}
+{% else %}
+  {% assign image_path = "/assets/images/blog_images/" | append: image_value %}
+  {% assign image_src = image_path | relative_url %}
+{% endif %}
+
+<figure class="pf-blog-image">
+  <img src="{{ image_src }}" alt="{{ include.alt | default: include.caption | default: '' | escape }}" loading="lazy">
+  {% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}
+</figure>

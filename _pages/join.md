@@ -9,7 +9,7 @@ author_profile: false
   <p class="pf-kicker">Join the Community</p>
   <h1>Help us make food accessible and sustainable to community members in the South Side area.</h1>
   <p>Phoenix Farms grows through the people who show up, lend a hand, share skills, and care about the work.</p>
-  <a class="btn btn--primary" href="mailto:phoenixfarms.nfp@gmail.com">Join Now</a>
+  <a class="btn btn--primary" href="https://tally.so/r/{{ site.footer.newsletter.tally_form_id }}" data-tally-open="{{ site.footer.newsletter.tally_form_id }}" data-tally-layout="{{ site.footer.newsletter.tally_layout }}" data-tally-width="{{ site.footer.newsletter.tally_width }}" data-tally-emoji-text="{{ site.footer.newsletter.tally_emoji }}" data-tally-emoji-animation="{{ site.footer.newsletter.tally_emoji_animation }}">Join Now</a>
 </section>
 
 <section class="pf-section">

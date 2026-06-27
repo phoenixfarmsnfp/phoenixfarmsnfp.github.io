@@ -6,9 +6,14 @@ main:
     url: /donate/
   - title: "Blog"
     url: /blog/
+  - title: "Our Forest"
+    url: /our-forest/
+  - title: "Resources"
+    url: /resources/
   - title: "About"
     url: /about/
   - title: "Events"
     url: /events/
   - title: "Join"
     url: /join/
+    newsletter_popup: true

@@ -16,9 +16,16 @@
           {%- for link in site.data.navigation.main -%}
             <li class="masthead__menu-item">
               <a
-                href="{{ link.url | relative_url }}"
+                {% if link.newsletter_popup %}href="https://tally.so/r/{{ site.footer.newsletter.tally_form_id }}"{% else %}href="{{ link.url | relative_url }}"{% endif %}
                 {% if link.description %} title="{{ link.description }}"{% endif %}
                 {% if link.target %} target="{{ link.target }}"{% endif %}
+                {% if link.newsletter_popup %}
+                data-tally-open="{{ site.footer.newsletter.tally_form_id }}"
+                data-tally-layout="{{ site.footer.newsletter.tally_layout }}"
+                data-tally-width="{{ site.footer.newsletter.tally_width }}"
+                data-tally-emoji-text="{{ site.footer.newsletter.tally_emoji }}"
+                data-tally-emoji-animation="{{ site.footer.newsletter.tally_emoji_animation }}"
+                {% endif %}
               >{{ link.title }}</a>
             </li>
           {%- endfor -%}

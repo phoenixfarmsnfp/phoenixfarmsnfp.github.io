@@ -1,0 +1,12 @@
+- name: "Phoenix Farms RSO"
+  description: "UChicago's premier beekeeping (Harper Hives) and gardening (Avant Garden) RSO. Comprised of a mixture of undergraduates, graduate students, and university employees; boasts the highest hives in Illinois south of the Chicago Loop and a garden with some of the most unique crops in the city."
+  address: "5801 S Ellis Avenue, Chicago, IL 60637"
+  email: "phoenixfarms@lists.uchicago.edu"
+
+- name: "First Presbyterian Church"
+  description: "Beehives are housed at First Presbyterian Church, where both students and members of the church conduct hive inspections, and congregants lead blessings of the bees."
+  address: "6400 S Kimbark Ave, Chicago, IL 60637"
+
+- name: "Campus Composting"
+  description: "Through the Phoenix Sustainability RSO, Campus Composting works to reduce organic waste produced by the University community through public education about waste sorting and the implementation of composting infrastructure on and off-campus. Phoenix Farms compost bins are provided to PSI for use at events, and finished compost is returned for use in planting at our Food Forest."
+  email: "phoenix.initiative.uchicago@gmail.com"

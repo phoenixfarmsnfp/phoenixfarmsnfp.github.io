@@ -2,6 +2,9 @@
 title: "Eggers Grove Nature Block Party"
 date: 2025-06-15 09:00:00
 author: "Phoenix Farms Not-For-Profit"
+tags: [community events, pollinators]
+thumbnail:
+thumbnail_alt:
 ---
 
 This May, Phoenix Farms participated in the Forest Preserves of Cook County annual Nature Block Party at Eggers Grove. We were excited to join this awesome celebration of biodiversity!

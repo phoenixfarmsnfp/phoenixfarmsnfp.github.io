@@ -1,0 +1,45 @@
+{% assign newsletter = site.footer.newsletter %}
+{% if newsletter.tally_form_id %}
+<script async src="https://tally.so/widgets/embed.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var newsletterForm = document.querySelector("[data-tally-newsletter-form]");
+    var tallyScript = document.querySelector('script[src="https://tally.so/widgets/embed.js"]');
+
+    if (!newsletterForm) return;
+
+    function openNewsletterPopup(email) {
+      var options = {
+        layout: {{ newsletter.tally_layout | default: "modal" | jsonify }},
+        width: {{ newsletter.tally_width | default: 375 }},
+        emoji: {
+          text: {{ newsletter.tally_emoji | default: "🌱" | jsonify }},
+          animation: {{ newsletter.tally_emoji_animation | default: "rubber-band" | jsonify }}
+        },
+        hiddenFields: {
+          email: email
+        }
+      };
+
+      if (window.Tally) {
+        window.Tally.openPopup({{ newsletter.tally_form_id | jsonify }}, options);
+        return;
+      }
+
+      if (tallyScript) {
+        tallyScript.addEventListener("load", function () {
+          window.Tally.openPopup({{ newsletter.tally_form_id | jsonify }}, options);
+        }, { once: true });
+      }
+    }
+
+    newsletterForm.addEventListener("submit", function (event) {
+      if (!newsletterForm.checkValidity()) return;
+
+      event.preventDefault();
+      var emailInput = newsletterForm.querySelector('input[type="email"]');
+      openNewsletterPopup(emailInput ? emailInput.value.trim() : "");
+    });
+  });
+</script>
+{% endif %}

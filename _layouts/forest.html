@@ -1,0 +1,49 @@
+---
+layout: single
+---
+
+<article class="pf-forest-detail">
+  {% assign forest_image = site.static_files | where: "path", page.thumbnail | first %}
+  <div class="pf-forest-detail__hero">
+    <div>
+      {% if forest_image %}
+      <img class="pf-forest-detail__image" src="{{ page.thumbnail | relative_url }}" alt="{{ page.thumbnail_alt | default: page.title | escape }}">
+      {% else %}
+      <div class="pf-forest-feature__image">
+        <div class="pf-forest-feature__placeholder">Forest image coming soon</div>
+      </div>
+      {% endif %}
+    </div>
+    <div>
+      <p class="pf-kicker">Phoenix Farms Forest</p>
+      <h1>{{ page.title }}</h1>
+      <dl class="pf-forest-facts">
+        <div>
+          <dt>Age</dt>
+          <dd>{{ page.age }} {% if page.age == 1 %}year{% else %}years{% endif %}</dd>
+        </div>
+        <div>
+          <dt>Partner</dt>
+          <dd>{{ page.partner }}</dd>
+        </div>
+        <div class="pf-forest-facts__wide">
+          <dt>Address</dt>
+          <dd>{{ page.address }}</dd>
+        </div>
+        <div class="pf-forest-facts__wide">
+          <dt>Plants</dt>
+          <dd>{{ page.plants | join: ", " }}</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  {% assign forest_content = content | strip %}
+  {% unless forest_content == "" %}
+  <section class="pf-section">
+    {{ content }}
+  </section>
+  {% endunless %}
+
+  <p><a class="pf-link" href="{{ '/our-forest/' | relative_url }}">Back to Our Forest</a></p>
+</article>

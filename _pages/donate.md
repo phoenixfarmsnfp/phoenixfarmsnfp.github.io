@@ -5,11 +5,16 @@ layout: single
 author_profile: false
 ---
 
-<section class="pf-page-intro">
-  <p class="pf-kicker">Donations</p>
-  <h1>With your donation, you can help provide Phoenix Farms fresh crops and resources to people throughout the Hyde Park area.</h1>
-  <p>Your support helps Phoenix Farms NFP establish food forests and sustain community-centered growing spaces.</p>
-  <a class="btn btn--primary" href="mailto:phoenixfarms.nfp@gmail.com?subject=Phoenix%20Farms%20Donation">Donate Here</a>
+<section class="pf-page-intro pf-donate-hero">
+  <div class="pf-donate-hero__content">
+    <p class="pf-kicker">Donations</p>
+    <h1>With your donation, you can help provide Phoenix Farms fresh crops and resources to people throughout the Hyde Park area.</h1>
+    <p>Your support helps Phoenix Farms NFP establish food forests and sustain community-centered growing spaces.</p>
+    <a class="btn btn--primary" href="mailto:{{ site.contact.email }}?subject={{ site.contact.donation_subject | url_encode }}">Donate Here</a>
+  </div>
+  <div class="pf-donate-hero__media">
+    <img src="{{ site.donation.image | relative_url }}" alt="{{ site.donation.image_alt }}">
+  </div>
 </section>
 
 <section class="pf-section">

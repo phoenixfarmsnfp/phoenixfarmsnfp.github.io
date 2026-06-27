@@ -2,6 +2,9 @@
 title: "Spring Planting"
 date: 2025-06-15 12:00:00
 author: "Phoenix Farms Not-For-Profit"
+tags: [field updates, planting, pollinators]
+thumbnail:
+thumbnail_alt:
 ---
 
 Spring has officially sprung at Phoenix Farms, and we've been busy planning and planting for a delicious season ahead.

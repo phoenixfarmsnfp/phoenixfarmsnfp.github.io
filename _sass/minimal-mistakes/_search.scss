@@ -7,7 +7,6 @@
     margin-bottom: 0.25em;
   }
 }
-
 .search__toggle {
   margin-inline: 1rem;
   height: $nav-toggle-height;
@@ -107,23 +106,4 @@
   .archive__item-excerpt {
     margin-bottom: 0;
   }
-}
-
-/* Algolia search */
-
-.ais-search-box {
-  max-width: 100% !important;
-  margin-bottom: 2em;
-}
-
-.archive__item-title .ais-Highlight {
-  color: $primary-color;
-  font-style: normal;
-  text-decoration: underline;
-}
-
-.archive__item-excerpt .ais-Highlight {
-  color: $primary-color;
-  font-style: normal;
-  font-weight: bold;
 }
