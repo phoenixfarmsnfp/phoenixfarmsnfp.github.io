@@ -1,0 +1,7 @@
+{% if include.actions %}
+<div class="pf-actions">
+  {% for action in include.actions %}
+    {% include pf-button.html action=action %}
+  {% endfor %}
+</div>
+{% endif %}

@@ -1,0 +1,8 @@
+{% assign section = include.section %}
+{% assign heading_id = include.heading_id %}
+
+<section class="pf-coming-soon"{% if heading_id %} aria-labelledby="{{ heading_id }}"{% endif %}>
+  {% if section.kicker %}<p class="pf-kicker">{{ section.kicker }}</p>{% endif %}
+  {% if section.heading %}<h2{% if heading_id %} id="{{ heading_id }}"{% endif %}>{{ section.heading }}</h2>{% endif %}
+  {% if section.text %}<p>{{ section.text }}</p>{% endif %}
+</section>

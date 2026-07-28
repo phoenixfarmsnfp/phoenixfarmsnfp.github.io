@@ -3,15 +3,15 @@
    ========================================================================== */
 
 /* Colors */
-$background-color: #FFFDEE !default;
-$text-color: #191101 !default;
-$muted-text-color: #777465 !default;
-$section-background-color: #777465 !default;
-$primary-color: #E2CCBB !default; // pink accent
-$accent-color: #990C1A !default; // logo red accent
-$border-color: #191101 !default;
-$footer-background-color: #191101 !default;
-$header-background-color: #191101 !default;
+$background-color: #FAF8F0 !default;
+$text-color: #252317 !default;
+$muted-text-color: #66705A !default;
+$section-background-color: #66705A !default;
+$primary-color: #E4E9DD !default; // soft linen accent
+$accent-color: #8F1822 !default; // logo red accent
+$border-color: #252317 !default;
+$footer-background-color: #252317 !default;
+$header-background-color: #252317 !default;
 $link-color: $accent-color !default;
 $link-color-hover: mix(#000, $accent-color, 25%) !default;
 $masthead-link-color: $primary-color !default;
@@ -29,7 +29,7 @@ $border-radius: 6px !default;
 
 /* Code background - slightly darker than main background */
 $code-background-color: #f5e5e6 !default;
-$code-background-color-dark: #E2CCBB !default;
+$code-background-color-dark: #E4E9DD !default;
 
 /* Form elements */
 $form-background-color: #f5e5e6 !default;
@@ -43,14 +43,14 @@ $focus-color: $primary-color !default;
 $active-color: mix(#fff, $primary-color, 80%) !default;
 
 /* Phoenix Farms syntax highlighting (warm earth tones) */
-$base00: #191101 !default;
+$base00: #252317 !default;
 $base01: #2d2620 !default;
 $base02: #3f3830 !default;
-$base03: #777465 !default;
+$base03: #66705A !default;
 $base04: #8a8076 !default;
-$base05: #E2CCBB !default;
+$base05: #E4E9DD !default;
 $base06: #eee5dd !default;
-$base07: #FFFDEE !default;
+$base07: #FAF8F0 !default;
 $base08: #a0522d !default;
 $base09: #cd853f !default;
 $base0a: #daa520 !default;

@@ -1,0 +1,7 @@
+{% assign section = include.section %}
+{% if section.kicker or section.heading %}
+<div class="pf-section__heading">
+  {% if section.kicker %}<p class="pf-kicker">{{ section.kicker }}</p>{% endif %}
+  {% if section.heading %}<h2{% if include.heading_id %} id="{{ include.heading_id }}"{% endif %}>{{ section.heading }}</h2>{% endif %}
+</div>
+{% endif %}

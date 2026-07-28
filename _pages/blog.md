@@ -3,13 +3,13 @@ title: "Living Project Blog"
 permalink: /blog/
 layout: single
 author_profile: false
+intro:
+  kicker: "Living Project Blog"
+  heading: "Updates from the food forest."
+  text: "Planting notes, harvest observations, community events, internship research, and seasonal updates from Phoenix Farms."
 ---
 
-<section class="pf-page-intro">
-  <p class="pf-kicker">Living Project Blog</p>
-  <h1>Updates from the food forest.</h1>
-  <p>Planting notes, harvest observations, community events, internship research, and seasonal lessons from Phoenix Farms.</p>
-</section>
+{% include pf-page-intro.html intro=page.intro %}
 
 {% assign sorted_posts = site.posts | sort: "date" | reverse %}
 {% assign featured = sorted_posts | first %}

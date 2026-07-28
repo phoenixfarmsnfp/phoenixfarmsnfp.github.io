@@ -1,0 +1,12 @@
+{% assign feature = include.feature %}
+
+<section class="pf-section pf-donate-feature">
+  <div>
+    {% if feature.kicker %}<p class="pf-kicker">{{ feature.kicker }}</p>{% endif %}
+    {% if feature.heading %}<h2>{{ feature.heading }}</h2>{% endif %}
+    {% include pf-actions.html actions=feature.actions %}
+  </div>
+  <div class="pf-feature-grid">
+    <img class="pf-donation-image" src="{{ feature.image | relative_url }}" alt="{{ feature.image_alt }}">
+  </div>
+</section>

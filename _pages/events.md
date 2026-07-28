@@ -3,12 +3,25 @@ title: "Events"
 permalink: /events/
 layout: single
 author_profile: false
+intro:
+  kicker: "Events"
+  heading: "Gatherings, workdays, and community invitations."
+volunteer_cta:
+  kicker: "Become A Volunteer"
+  heading: "Help us make food accessible and sustainable to community members in the South Side area."
+  action:
+    label: "Join the Community"
+    use_tally: true
+donate_cta:
+  kicker: "Support the work"
+  heading: "With your donation, you can help provide Phoenix Farms fresh crops and resources to people throughout the Hyde Park area."
+  action:
+    label: "Donate Here"
+    url: "/donate/"
+    class: "btn"
 ---
 
-<section class="pf-page-intro">
-  <p class="pf-kicker">Events</p>
-  <h1>Gatherings, workdays, and community invitations.</h1>
-</section>
+{% include pf-page-intro.html intro=page.intro %}
 
 {% assign sorted_events = site.events | sort: "date" | reverse %}
 {% assign today_key = site.time | date: "%Y%m%d" | plus: 0 %}
@@ -79,18 +92,5 @@ author_profile: false
 </section>
 {% endif %}
 
-<section class="pf-section pf-cta-band">
-  <div>
-    <p class="pf-kicker">Become A Volunteer</p>
-    <h2>Help us make food accessible and sustainable to community members in the South Side area.</h2>
-  </div>
-  <a class="btn btn--primary" href="https://tally.so/r/{{ site.footer.newsletter.tally_form_id }}" data-tally-open="{{ site.footer.newsletter.tally_form_id }}" data-tally-layout="{{ site.footer.newsletter.tally_layout }}" data-tally-width="{{ site.footer.newsletter.tally_width }}" data-tally-emoji-text="{{ site.footer.newsletter.tally_emoji }}" data-tally-emoji-animation="{{ site.footer.newsletter.tally_emoji_animation }}">Join the Community</a>
-</section>
-
-<section class="pf-section pf-cta-band pf-cta-band--quiet">
-  <div>
-    <p class="pf-kicker">Support the work</p>
-    <h2>With your donation, you can help provide Phoenix Farms fresh crops and resources to people throughout the Hyde Park area.</h2>
-  </div>
-  <a class="btn" href="/donate/">Donate Here</a>
-</section>
+{% include pf-cta-band.html cta=page.volunteer_cta %}
+{% include pf-cta-band.html cta=page.donate_cta class="pf-cta-band--quiet" %}

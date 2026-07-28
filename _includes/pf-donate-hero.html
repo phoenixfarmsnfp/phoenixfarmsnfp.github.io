@@ -1,0 +1,13 @@
+{% assign hero = include.hero %}
+
+<section class="pf-page-intro pf-donate-hero">
+  <div class="pf-donate-hero__content">
+    {% if hero.kicker %}<p class="pf-kicker">{{ hero.kicker }}</p>{% endif %}
+    {% if hero.heading %}<h1>{{ hero.heading }}</h1>{% endif %}
+    {% if hero.text %}<p>{{ hero.text }}</p>{% endif %}
+    {% if hero.action %}{% include pf-button.html action=hero.action %}{% endif %}
+  </div>
+  <div class="pf-donate-hero__media">
+    <img src="{{ hero.image | relative_url }}" alt="{{ hero.image_alt }}">
+  </div>
+</section>

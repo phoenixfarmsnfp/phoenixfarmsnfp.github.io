@@ -1,37 +1,66 @@
+- name: "Elena Gdula"
+  role: "Current board member and former Metcalf intern"
+  group: "current_board"
+  image: "/assets/images/board_images/elena.png"
+  image_alt: "Elena Gdula"
+  bio:
+    - "Elena is a current board member and former Metcalf Intern through the University of Chicago for Phoenix Farms NFP. She works on-site with general Food Forest upkeep, planting and pruning crops and plants, updating the website, and fostering community relationships. As a Geophysics and Environmental Sciences major with a big passion for sustainability and conservation, Elena enjoys gardening, cooking, and educating others about the importance of our environment."
+
 - name: "Marek Piechowicz"
-  role: "Co-founder and contributor"
+  role: "Current board member and co-founder"
+  group: "current_board"
+  image: "/assets/images/board_images/marek.png"
+  image_alt: "Marek Piechowicz"
   bio:
     - "Marek is an amateur beekeeper and helped to found the Phoenix Farms NFP. He enjoys tending to hives, talking about the importance of pollinators, and cultivating pollinator-friendly gardens."
 
 - name: "Grace Martin"
-  role: "Board member"
+  role: "Current board member"
+  group: "current_board"
+  image: "/assets/images/board_images/grace.png"
+  image_alt: "Grace Martin"
   bio:
     - "Grace is a UChicago alum ('19) and current Master in Public Policy candidate at Harvard Kennedy School. A lifelong gardener and Chicagoan, she got involved with Phoenix Farms during college as a beekeeper. After serving as a Peace Corps agriculture volunteer in Cameroon, she joined the Board of Phoenix Farms Nonprofit to continue the mission of bringing healthy, sustainable food systems to Chicago neighborhoods."
 
 - name: "Jules Eng"
-  role: "Contributor"
+  role: "Current board member"
+  group: "current_board"
+  image: "/assets/images/board_images/jules.png"
+  image_alt: "Jules Eng"
   bio:
     - "Jules is a recent UChicago alum ('23) who has a passion for all things sustainability and food. An amateur gardener and honey taster, she is interested in bringing equitable food systems to the Southside."
 
-- name: "Elena Gdula"
-  role: "Board member and former Metcalf intern"
+- name: "Iman"
+  role: "2026 Summer intern"
+  group: "current_board"
+  image: "/assets/images/board_images/iman.png"
+  image_alt: "Iman"
   bio:
-    - "Elena is a current board member and former Metcalf Intern through the University of Chicago for Phoenix Farms NFP. She works on-site with general Food Forest upkeep, planting and pruning crops and plants, updating the website, and fostering community relationships. As a Geophysics and Environmental Sciences major with a big passion for sustainability and conservation, Elena enjoys gardening, cooking, and educating others about the importance of our environment."
-
-- name: "Tess Teodoro"
-  role: "Board member"
-  bio:
-    - "Formerly co-president of the UChicago student branch of Phoenix Farms, Tess is passionate about environmental justice in her adopted home of Chicago. She joined Phoenix Farms as a Journeywoman Beekeeper in 2018 and was part of the inaugural board that incorporated as a federally-recognized nonprofit in 2020."
-    - "From talking about honeybees while on-the-ground in Woodlawn and Hyde Park to expanding our community partners across the region as we grow our food forest initiatives, Tess loves working towards more sustainable, equitable, and livable urban spaces in the Midwest."
+    - "Iman (she/her) is a Cognitive Science graduate at UChicago ('26) and an incoming Master in Management candidate at UChicago Booth School of Business with a drive for positive community impact and on-the-ground initiatives. Iman founded the UChicago Cultural organization, the East African Student Association (EASA), in 2023, and since then, she has also been working in a Radiology Lab in Mitchell Hospital aimed at improving prostate cancer diagnostics. Iman delves into topics of interest, having attended study abroad programs in Paris and Florence for Philosophy and Art, respectively. Iman hopes to converge her work experience and upbringing in agriculture-centered Kenyan society to facilitate Phoenix Farms' goals as a 2026 Summer Intern."
 
 - name: "Asher Jaffe"
   role: "Former Metcalf intern"
+  group: "former_intern"
+  image: "/assets/images/board_images/asher.png"
+  image_alt: "Asher Jaffe"
   bio:
     - "For over 2 years, Asher worked on-site at our Food Forest and helped build and strengthen relationships with nearby people and organizations throughout Hyde Park, including First Presbyterian and Kumunda Community Garden."
     - "With a strong passion for gardening and the environment, Asher hand-picked crops and plants to be planted within our lot, including complementary plants to our fruit trees, and helped maintain the general upkeep of the Forest as our former Metcalf Intern through the University of Chicago."
 
 - name: "Yasmine Baldo"
   role: "Spring 2025 Metcalf intern"
+  group: "former_intern"
+  image: "/assets/images/board_images/yasmine.png"
+  image_alt: "Yasmine Baldo"
   bio:
     - "Yasmine Baldo, a third-year Environmental Science student at the University of Chicago, thrives on holistically blending her passions for biology, research, public health, and environmental justice. Beyond her studies, she finds inspiration in graphite sketching, exploring nature through hiking and trail running, and expressing herself musically with the clarinet and guitar."
     - "She has contributed art to the University's Logan Arts Center through the Organization of Black Students and founded the East African Student Association. It is these passions that propelled her spatial and community-driven research efforts for Phoenix Farms as our Spring 2025 Metcalf Intern."
+
+- name: "Tess Teodoro"
+  role: "Former board member"
+  group: "former_board"
+  image: "/assets/images/board_images/tess.png"
+  image_alt: "Tess Teodoro"
+  bio:
+    - "Formerly co-president of the UChicago student branch of Phoenix Farms, Tess is passionate about environmental justice in her adopted home of Chicago. She joined Phoenix Farms as a Journeywoman Beekeeper in 2018 and was part of the inaugural board that incorporated as a federally-recognized nonprofit in 2020."
+    - "From talking about honeybees while on-the-ground in Woodlawn and Hyde Park to expanding our community partners across the region as we grow our food forest initiatives, Tess loves working towards more sustainable, equitable, and livable urban spaces in the Midwest."

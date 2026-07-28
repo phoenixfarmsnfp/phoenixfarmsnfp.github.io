@@ -1,0 +1,21 @@
+{% assign action = include.action %}
+{% assign button_class = action.class | default: "btn btn--primary" %}
+{% assign action_url = action.url %}
+{% assign action_label = action.label %}
+{% assign is_special_url = false %}
+{% if action.use_tally %}
+  {% assign action_url = "https://tally.so/r/" | append: site.footer.newsletter.tally_form_id %}
+  {% assign is_special_url = true %}
+{% elsif action.mailto_site_contact %}
+  {% assign action_url = "mailto:" | append: site.contact.email %}
+  {% assign action_label = action_label | default: site.contact.email %}
+  {% if action.subject %}
+    {% assign encoded_subject = action.subject | url_encode %}
+    {% assign action_url = action_url | append: "?subject=" | append: encoded_subject %}
+  {% endif %}
+  {% assign is_special_url = true %}
+{% elsif action_url contains "://" %}
+  {% assign is_special_url = true %}
+{% endif %}
+
+<a class="{{ button_class }}" href="{% if is_special_url %}{{ action_url }}{% else %}{{ action_url | relative_url }}{% endif %}"{% if action.use_tally %} data-tally-open="{{ site.footer.newsletter.tally_form_id }}" data-tally-layout="{{ site.footer.newsletter.tally_layout }}" data-tally-width="{{ site.footer.newsletter.tally_width }}" data-tally-emoji-text="{{ site.footer.newsletter.tally_emoji }}" data-tally-emoji-animation="{{ site.footer.newsletter.tally_emoji_animation }}"{% endif %}>{{ action_label }}</a>

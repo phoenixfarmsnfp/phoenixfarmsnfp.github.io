@@ -1,0 +1,67 @@
+{% assign section = include.section %}
+{% assign current_people = site.data.people | where: "group", "current_board" %}
+{% assign former_interns = site.data.people | where: "group", "former_intern" %}
+{% assign former_board = site.data.people | where: "group", "former_board" %}
+
+<section class="pf-section">
+  {% include pf-section-heading.html section=section %}
+  {% if current_people.size > 0 %}
+  <div class="pf-people-section">
+    <h3>{{ section.current_heading | default: "Current board members" }}</h3>
+    <div class="pf-people-grid">
+      {% for person in current_people %}
+      <article class="pf-person">
+        {% if person.image %}
+        <img class="pf-person__image" src="{{ person.image | relative_url }}" alt="{{ person.image_alt | default: person.name | escape }}">
+        {% endif %}
+        <div class="pf-person__body">
+          <h4>{{ person.name }}</h4>
+          {% if person.role %}<p class="pf-person__role">{{ person.role }}</p>{% endif %}
+          {% for paragraph in person.bio %}<p>{{ paragraph }}</p>{% endfor %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if former_interns.size > 0 %}
+  <div class="pf-people-section">
+    <h3>{{ section.former_interns_heading | default: "Former interns" }}</h3>
+    <div class="pf-people-grid">
+      {% for person in former_interns %}
+      <article class="pf-person">
+        {% if person.image %}
+        <img class="pf-person__image" src="{{ person.image | relative_url }}" alt="{{ person.image_alt | default: person.name | escape }}">
+        {% endif %}
+        <div class="pf-person__body">
+          <h4>{{ person.name }}</h4>
+          {% if person.role %}<p class="pf-person__role">{{ person.role }}</p>{% endif %}
+          {% for paragraph in person.bio %}<p>{{ paragraph }}</p>{% endfor %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if former_board.size > 0 %}
+  <div class="pf-people-section">
+    <h3>{{ section.former_board_heading | default: "Former board members and contributors" }}</h3>
+    <div class="pf-people-grid">
+      {% for person in former_board %}
+      <article class="pf-person">
+        {% if person.image %}
+        <img class="pf-person__image" src="{{ person.image | relative_url }}" alt="{{ person.image_alt | default: person.name | escape }}">
+        {% endif %}
+        <div class="pf-person__body">
+          <h4>{{ person.name }}</h4>
+          {% if person.role %}<p class="pf-person__role">{{ person.role }}</p>{% endif %}
+          {% for paragraph in person.bio %}<p>{{ paragraph }}</p>{% endfor %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</section>

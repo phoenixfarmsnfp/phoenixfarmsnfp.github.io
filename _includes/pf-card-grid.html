@@ -1,0 +1,18 @@
+{% assign section = include.section %}
+{% assign grid_class = include.grid_class | default: "pf-card-grid" %}
+
+<section class="pf-section">
+  {% include pf-section-heading.html section=section %}
+  <div class="{{ grid_class }}">
+    {% for card in section.cards %}
+    <article class="pf-card{% if card.class %} {{ card.class }}{% endif %}">
+      {% if card.kicker %}<p class="pf-kicker">{{ card.kicker }}</p>{% endif %}
+      {% if card.heading %}<h3>{{ card.heading }}</h3>{% endif %}
+      {% if card.text %}<p>{{ card.text }}</p>{% endif %}
+      {% if card.link %}
+        <p><a class="pf-link" href="{{ card.link.url | relative_url }}">{{ card.link.label }}</a></p>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </div>
+</section>

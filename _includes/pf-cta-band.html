@@ -1,0 +1,12 @@
+{% assign cta = include.cta %}
+{% assign cta_class = include.class | default: "" %}
+
+<section class="pf-section pf-cta-band{% if cta_class %} {{ cta_class }}{% endif %}">
+  <div>
+    {% if cta.kicker %}<p class="pf-kicker">{{ cta.kicker }}</p>{% endif %}
+    {% if cta.heading %}<h2>{{ cta.heading }}</h2>{% endif %}
+  </div>
+  {% if cta.action %}
+    {% include pf-button.html action=cta.action %}
+  {% endif %}
+</section>

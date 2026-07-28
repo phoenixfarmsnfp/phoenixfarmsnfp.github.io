@@ -1,0 +1,16 @@
+{% assign section = include.section %}
+
+<section class="pf-section">
+  {% include pf-section-heading.html section=section %}
+  <div class="pf-card-grid">
+    {% for partner in site.data.partners %}
+    <article class="pf-card">
+      <h3>{{ partner.name }}</h3>
+      <p>{{ partner.description }}</p>
+      {% if partner.address %}<p>{{ partner.address }}</p>{% endif %}
+      {% if partner.email %}<p>Email: <a href="mailto:{{ partner.email }}">{{ partner.email }}</a></p>{% endif %}
+      {% if partner.url %}<p><a class="pf-link" href="{{ partner.url }}">Visit website</a></p>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+</section>

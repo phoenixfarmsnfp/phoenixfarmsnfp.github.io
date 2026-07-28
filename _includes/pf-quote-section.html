@@ -1,0 +1,8 @@
+{% assign quote = include.quote %}
+
+<section class="pf-section pf-section--quote">
+  <div>
+    {% if quote.kicker %}<p class="pf-kicker">{{ quote.kicker }}</p>{% endif %}
+    {% if quote.heading %}<h2>{{ quote.heading }}</h2>{% endif %}
+  </div>
+</section>

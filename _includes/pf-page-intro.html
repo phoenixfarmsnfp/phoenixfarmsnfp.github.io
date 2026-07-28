@@ -1,0 +1,9 @@
+{% assign intro = include.intro %}
+{% assign intro_class = include.class | default: "" %}
+
+<section class="pf-page-intro{% if intro_class %} {{ intro_class }}{% endif %}">
+  {% if intro.kicker %}<p class="pf-kicker">{{ intro.kicker }}</p>{% endif %}
+  {% if intro.heading %}<h1>{{ intro.heading }}</h1>{% endif %}
+  {% if intro.text %}<p>{{ intro.text }}</p>{% endif %}
+  {% include pf-actions.html actions=intro.actions %}
+</section>

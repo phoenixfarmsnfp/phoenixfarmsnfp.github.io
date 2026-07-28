@@ -1,0 +1,17 @@
+{% assign visit = include.visit %}
+
+<section class="pf-section pf-visit-strip">
+  <div>
+    {% if visit.kicker %}<p class="pf-kicker">{{ visit.kicker }}</p>{% endif %}
+    {% if visit.use_site_contact %}
+      <h2>{{ site.contact.address }}</h2>
+      <p>{{ site.contact.location_note }} {{ site.contact.hours }}</p>
+    {% else %}
+      {% if visit.heading %}<h2>{{ visit.heading }}</h2>{% endif %}
+      {% if visit.text %}<p>{{ visit.text }}</p>{% endif %}
+    {% endif %}
+  </div>
+  {% if visit.action %}
+    {% include pf-button.html action=visit.action %}
+  {% endif %}
+</section>
