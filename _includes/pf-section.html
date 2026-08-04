@@ -1,6 +1,8 @@
 {% assign block = include.block %}
 
 {% case block.type %}
+  {% when "announcement" %}
+    {% include announcements.html block=block %}
   {% when "home_hero" %}
     {% include pf-home-hero.html block=block %}
   {% when "quote" %}

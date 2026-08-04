@@ -1,3 +1,12 @@
+home_announcement:
+  type: announcement
+  aria_label: "Home page announcement"
+  items:
+    - text: "Stop by and grab some fruit!"
+      button_label: "Sign up"
+      use_tally: true
+      enabled: true
+
 home_hero:
   type: home_hero
   kicker: "Phoenix Farms Not-For-Profit"
@@ -125,7 +134,7 @@ donate_cta:
 resources_intro:
   type: page_intro
   kicker: "Resources"
-  heading: "Information for growing, learning, and sharing."
+  heading: "Information for growing"
   text: "This space will collect useful information, educational resources, and content from Phoenix Farms and our community partners."
 
 generic_coming_soon:

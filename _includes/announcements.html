@@ -1,6 +1,7 @@
-{% assign announcements = page.announcements | default: layout.announcements %}
+{% assign block = include.block %}
+{% assign announcements = include.announcements | default: block.items | default: block.announcements | default: page.announcements | default: layout.announcements %}
 {% if announcements %}
-  <section class="announcement-banners" aria-label="Site announcements">
+  <section class="announcement-banners{% if block.class %} {{ block.class }}{% endif %}" aria-label="{{ block.aria_label | default: 'Site announcements' }}">
     <div class="announcement-banners__inner">
       {% for announcement in announcements %}
         {% if announcement.enabled != false and announcement.text %}

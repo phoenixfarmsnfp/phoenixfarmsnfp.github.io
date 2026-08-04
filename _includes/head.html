@@ -21,7 +21,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Petrona:wght@500;550;600&amp;family=Sora:wght@400;500;600;700&amp;display=swap">
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+{% assign css_version = site.github.build_revision | default: site.time | date: "%s" %}
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ css_version }}">
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
 
