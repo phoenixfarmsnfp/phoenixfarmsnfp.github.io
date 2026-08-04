@@ -4,7 +4,7 @@ home_announcement:
   items:
     - text: "Stop by and grab some fruit!"
       button_label: "Sign up"
-      use_tally: true
+      use_tally: false
       enabled: true
 
 home_hero:
