@@ -181,7 +181,7 @@ donate_cta_quiet:
 forest_intro:
   type: page_intro
   kicker: "Our Forest"
-  heading: "Food forests rooted in community."
+  heading: "God's Little Acre"
   text: "The sites Phoenix Farms and our partners are developing together."
 
 forest_index:
@@ -196,7 +196,7 @@ forest_index:
     text: "New partner sites will appear here as they develop."
   empty:
     kicker: "Coming Soon"
-    heading: "More sites are taking shape.""
+    heading: "More sites are taking shape."
 
 blog_intro:
   type: page_intro
