@@ -210,7 +210,7 @@ forest_index:
 blog_intro:
   type: page_intro
   kicker: "Living Project Blog"
-  heading: "Updates from the food forest."
+  heading: "Updates"
   text: "Planting notes, harvest observations, community events, internship research, and seasonal updates from Phoenix Farms."
 
 blog_index:
