@@ -1,0 +1,69 @@
+{% assign section = include.block | default: include.section %}
+{% assign sorted_events = site.events | sort: "date" | reverse %}
+{% assign today_key = site.time | date: "%Y%m%d" | plus: 0 %}
+{% assign upcoming_count = 0 %}
+{% assign prior_count = 0 %}
+
+<section class="pf-events-list" aria-label="Upcoming events">
+  {% for event in sorted_events %}
+    {% assign event_key = event.date | date: "%Y%m%d" | plus: 0 %}
+    {% if event_key >= today_key %}
+      {% assign upcoming_count = upcoming_count | plus: 1 %}
+  <article class="pf-event">
+    <div class="pf-event__date">
+      <span>{{ event.date | date: "%b" }}</span>
+      <strong>{{ event.date | date: "%-d" }}</strong>
+    </div>
+    <div class="pf-event__body">
+      <p class="pf-meta">{{ event.date | date: "%A, %B %-d, %Y" }}{% if event.time %} &middot; {{ event.time }}{% endif %}</p>
+      <h2><a href="{{ event.url | relative_url }}">{{ event.title }}</a></h2>
+      {% if event.description %}<p>{{ event.description }}</p>{% endif %}
+      <a class="pf-link" href="{{ event.url | relative_url }}">Event details</a>
+    </div>
+  </article>
+    {% endif %}
+  {% endfor %}
+
+  {% if upcoming_count == 0 %}
+  <div class="pf-coming-soon">
+    {% if section.empty.kicker %}<p class="pf-kicker">{{ section.empty.kicker }}</p>{% endif %}
+    {% if section.empty.heading %}<h2>{{ section.empty.heading }}</h2>{% endif %}
+    {% if section.empty.text %}<p>{{ section.empty.text }}</p>{% endif %}
+  </div>
+  {% endif %}
+</section>
+
+{% for event in sorted_events %}
+  {% assign event_key = event.date | date: "%Y%m%d" | plus: 0 %}
+  {% if event_key < today_key %}
+    {% assign prior_count = prior_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+{% if prior_count > 0 %}
+<section class="pf-section" aria-labelledby="prior-events-heading">
+  <div class="pf-section__heading">
+    {% if section.past.kicker %}<p class="pf-kicker">{{ section.past.kicker }}</p>{% endif %}
+    {% if section.past.heading %}<h2 id="prior-events-heading">{{ section.past.heading }}</h2>{% endif %}
+  </div>
+  <div class="pf-events-list">
+    {% for event in sorted_events %}
+      {% assign event_key = event.date | date: "%Y%m%d" | plus: 0 %}
+      {% if event_key < today_key %}
+    <article class="pf-event pf-event--past">
+      <div class="pf-event__date">
+        <span>{{ event.date | date: "%b" }}</span>
+        <strong>{{ event.date | date: "%-d" }}</strong>
+      </div>
+      <div class="pf-event__body">
+        <p class="pf-meta">{{ event.date | date: "%A, %B %-d, %Y" }}{% if event.time %} &middot; {{ event.time }}{% endif %}</p>
+        <h2><a href="{{ event.url | relative_url }}">{{ event.title }}</a></h2>
+        {% if event.description %}<p>{{ event.description }}</p>{% endif %}
+        <a class="pf-link" href="{{ event.url | relative_url }}">Event details</a>
+      </div>
+    </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

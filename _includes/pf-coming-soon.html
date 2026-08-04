@@ -1,4 +1,4 @@
-{% assign section = include.section %}
+{% assign section = include.block | default: include.section %}
 {% assign heading_id = include.heading_id %}
 
 <section class="pf-coming-soon"{% if heading_id %} aria-labelledby="{{ heading_id }}"{% endif %}>

@@ -14,7 +14,12 @@
         </a>
         <ul class="visible-links">
           {%- for link in site.data.navigation.main -%}
-            <li class="masthead__menu-item">
+            <li class="masthead__menu-item{% if link.children %} masthead__menu-item--has-children{% endif %}">
+              {% if link.dropdown_only %}
+              <button class="masthead__menu-button" type="button" aria-haspopup="true">
+                {{ link.title }}
+              </button>
+              {% else %}
               <a
                 {% if link.newsletter_popup %}href="https://tally.so/r/{{ site.footer.newsletter.tally_form_id }}"{% else %}href="{{ link.url | relative_url }}"{% endif %}
                 {% if link.description %} title="{{ link.description }}"{% endif %}
@@ -27,6 +32,16 @@
                 data-tally-emoji-animation="{{ site.footer.newsletter.tally_emoji_animation }}"
                 {% endif %}
               >{{ link.title }}</a>
+              {% endif %}
+              {% if link.children %}
+                <ul class="masthead__submenu">
+                  {% for child in link.children %}
+                    <li>
+                      <a href="{{ child.url | relative_url }}"{% if child.description %} title="{{ child.description }}"{% endif %}>{{ child.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
             </li>
           {%- endfor -%}
         </ul>

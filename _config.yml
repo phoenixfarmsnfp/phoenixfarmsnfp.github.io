@@ -117,6 +117,8 @@ contact:
 
 # Shared donation image used by the Donate page and donation features elsewhere.
 donation:
+  url: "https://buy.stripe.com/00g3g86Xb7R15QA7ss"
+  button_label: "Donate Here"
   image: "/assets/images/donate-image.jpg"
   image_alt: "Ripening tomatoes growing among green leaves"
 

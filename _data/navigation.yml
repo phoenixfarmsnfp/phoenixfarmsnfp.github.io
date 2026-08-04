@@ -1,19 +1,28 @@
 # main links
 main:
-  - title: "Home"
-    url: /
-  - title: "Donate"
-    url: /donate/
-  - title: "Blog"
-    url: /blog/
-  - title: "Our Forest"
-    url: /our-forest/
-  - title: "Resources"
-    url: /resources/
   - title: "About"
     url: /about/
-  - title: "Events"
+    children:
+      - title: "Mission & Aims"
+        url: /about/#mission-aims
+      - title: "Our Team"
+        url: /about/#our-team
+      - title: "Our Partners"
+        url: /about/#our-partners
+  - title: "Our Work"
+    dropdown_only: true
+    children:
+      - title: "Our Forest"
+        url: /our-forest/
+      - title: "Food-forest Model"
+        url: /food-forest-model/
+      - title: "Projects"
+        url: /projects/
+  - title: "Get Involved"
     url: /events/
-  - title: "Join"
-    url: /join/
-    newsletter_popup: true
+  - title: "Resources"
+    url: /resources/
+  - title: "News & Blog"
+    url: /blog/
+  - title: "Donate"
+    url: /donate/

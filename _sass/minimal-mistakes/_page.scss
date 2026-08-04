@@ -130,7 +130,7 @@ body {
       text-decoration: underline;
 
       img {
-        box-shadow: 0 0 10px rgba(#000, 0.25);
+        box-shadow: 0 0 10px rgba($color-text, 0.25);
       }
     }
   }
@@ -201,7 +201,7 @@ body {
     animation-delay: 0.25s;
 
     a {
-      color: #fff;
+      color: $color-background;
     }
 
     .wrapper {
@@ -216,8 +216,8 @@ body {
     .page__meta,
     .page__lead,
     .btn {
-      color: #fff;
-      text-shadow: 1px 1px 4px rgba(#000, 0.5);
+      color: $color-background;
+      text-shadow: 1px 1px 4px rgba($color-text, 0.5);
     }
 
     .page__lead {
@@ -246,10 +246,10 @@ body {
   inset-inline-end: 0;
   margin: 0 auto;
   padding: 2px 5px;
-  color: #fff;
+  color: $color-background;
   font-family: $caption-font-family;
   font-size: $type-size-7;
-  background: #000;
+  background: $color-text;
   text-align: end;
   z-index: 5;
   opacity: 0.5;
@@ -260,7 +260,7 @@ body {
   }
 
   a {
-    color: #fff;
+    color: $color-background;
     text-decoration: none;
   }
 }
@@ -344,7 +344,7 @@ body {
   margin-bottom: 8px;
   padding: 5px 10px;
   text-decoration: none;
-  border: 1px solid mix(#000, $border-color, 25%);
+  border: 1px solid $color-border;
   border-radius: $border-radius;
 
   &:hover {

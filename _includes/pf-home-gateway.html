@@ -1,56 +1,22 @@
-{% assign section = include.section %}
-{% assign sorted_forests = site.forests | sort: "age" | reverse %}
-{% assign featured_forest = sorted_forests | first %}
-{% assign featured_forest_image = site.static_files | where: "path", featured_forest.thumbnail | first %}
-{% assign sorted_events = site.events | sort: "date" | reverse %}
-{% assign today_key = site.time | date: "%Y%m%d" | plus: 0 %}
-{% assign upcoming_event = nil %}
-{% for event in sorted_events %}
-  {% assign event_key = event.date | date: "%Y%m%d" | plus: 0 %}
-  {% if event_key >= today_key %}
-    {% assign upcoming_event = event %}
-    {% break %}
-  {% endif %}
-{% endfor %}
+{% assign section = include.block | default: include.section %}
 
 <section class="pf-home-gateway" aria-labelledby="home-explore-heading">
   <div class="pf-home-gateway__inner">
     {% include pf-section-heading.html section=section heading_id="home-explore-heading" %}
     <div class="pf-home-gateway__grid">
-      <article class="pf-home-card">
-        <a class="pf-home-card__link" href="{{ section.forest.url | relative_url }}" aria-label="{{ section.forest.aria_label }}"></a>
-        {% if featured_forest_image %}
-        <div class="pf-home-card__media">
-          <img src="{{ featured_forest.thumbnail | relative_url }}" alt="{{ featured_forest.thumbnail_alt | default: featured_forest.title | escape }}">
-        </div>
-        {% endif %}
-        <div class="pf-home-card__body">
-          <p class="pf-kicker">{{ section.forest.kicker }}</p>
-          {% if featured_forest %}
-          <h3>{{ featured_forest.title }}</h3>
-          <p>{{ featured_forest.age }} {% if featured_forest.age == 1 %}year{% else %}years{% endif %} of community-rooted growth.</p>
-          {% else %}
-          <h3>{{ section.forest.fallback_heading }}</h3>
-          <p>{{ section.forest.fallback_text }}</p>
-          {% endif %}
-          <span class="pf-link">{{ section.forest.link_label }}</span>
-        </div>
-      </article>
-
       {% for card in section.cards %}
       <article class="pf-home-card{% if card.class %} {{ card.class }}{% endif %}">
         <a class="pf-home-card__link" href="{{ card.url | relative_url }}" aria-label="{{ card.aria_label }}"></a>
+        {% if card.image %}
+        <div class="pf-home-card__media">
+          <img src="{{ card.image | relative_url }}" alt="{{ card.image_alt | default: card.heading | escape }}">
+        </div>
+        {% endif %}
         <div class="pf-home-card__body">
-          <p class="pf-kicker">{{ card.kicker }}</p>
-          {% if card.dynamic_event and upcoming_event %}
-          <p class="pf-home-card__date">{{ upcoming_event.date | date: "%B %-d, %Y" }}</p>
-          <h3>{{ upcoming_event.title }}</h3>
-          <p>{{ upcoming_event.description }}</p>
-          {% else %}
-          <h3>{{ card.heading }}</h3>
-          <p>{{ card.text }}</p>
-          {% endif %}
-          <span class="pf-link">{{ card.link_label }}</span>
+          {% if card.kicker %}<p class="pf-kicker">{{ card.kicker }}</p>{% endif %}
+          {% if card.heading %}<h3>{{ card.heading }}</h3>{% endif %}
+          {% if card.text %}<p>{{ card.text }}</p>{% endif %}
+          {% if card.link_label %}<span class="pf-link">{{ card.link_label }}</span>{% endif %}
         </div>
       </article>
       {% endfor %}

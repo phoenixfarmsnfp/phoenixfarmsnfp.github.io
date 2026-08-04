@@ -1,6 +1,6 @@
-{% assign section = include.section %}
+{% assign section = include.block | default: include.section %}
 
-<section class="pf-section">
+<section class="pf-section"{% if section.heading_id %} id="{{ section.heading_id }}"{% endif %}>
   {% include pf-section-heading.html section=section %}
   <div class="pf-card-grid">
     {% for partner in site.data.partners %}

@@ -1,9 +1,17 @@
-{% assign intro = include.intro %}
+{% assign intro = include.block | default: include.section | default: include.intro %}
 {% assign intro_class = include.class | default: "" %}
 
-<section class="pf-page-intro{% if intro_class %} {{ intro_class }}{% endif %}">
+<section class="pf-page-intro{% if intro_class %} {{ intro_class }}{% endif %}"{% if intro.heading_id %} id="{{ intro.heading_id }}"{% endif %}>
   {% if intro.kicker %}<p class="pf-kicker">{{ intro.kicker }}</p>{% endif %}
   {% if intro.heading %}<h1>{{ intro.heading }}</h1>{% endif %}
-  {% if intro.text %}<p>{{ intro.text }}</p>{% endif %}
+  {% if intro.text %}
+    {% if intro.text.first %}
+      {% for paragraph in intro.text %}
+        {{ paragraph | markdownify }}
+      {% endfor %}
+    {% else %}
+      {{ intro.text | markdownify }}
+    {% endif %}
+  {% endif %}
   {% include pf-actions.html actions=intro.actions %}
 </section>

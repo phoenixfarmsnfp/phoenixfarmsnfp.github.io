@@ -6,6 +6,10 @@
 {% if action.use_tally %}
   {% assign action_url = "https://tally.so/r/" | append: site.footer.newsletter.tally_form_id %}
   {% assign is_special_url = true %}
+{% elsif action.use_donation %}
+  {% assign action_url = site.donation.url %}
+  {% assign action_label = action_label | default: site.donation.button_label | default: "Donate Here" %}
+  {% assign is_special_url = true %}
 {% elsif action.mailto_site_contact %}
   {% assign action_url = "mailto:" | append: site.contact.email %}
   {% assign action_label = action_label | default: site.contact.email %}

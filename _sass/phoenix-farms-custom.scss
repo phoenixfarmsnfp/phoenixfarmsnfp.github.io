@@ -1,8 +1,69 @@
-/* Phoenix Farms site components */
+/* Phoenix Farms global theme rules and site components */
+
+html,
+body {
+  background-color: $color-page-bg;
+  color: $color-body-text;
+  font-weight: $font-weight-body;
+}
+
+h1,
+h2 {
+  color: $color-heading;
+  font-family: $font-heading;
+  font-weight: $font-weight-heading;
+  font-variation-settings: $font-variation-heading;
+}
+
+h1 {
+  font-weight: $font-weight-display;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  color: $color-heading;
+  font-family: $font-body;
+  font-weight: $font-weight-card-heading;
+}
+
+a {
+  color: $color-link;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
+
+  &:hover,
+  &:focus {
+    color: $color-link;
+    text-decoration: underline;
+  }
+}
+
+nav a {
+  font-weight: $font-weight-navigation;
+}
+
+.btn {
+  font-weight: $font-weight-button;
+}
+
+.btn--secondary {
+  font-weight: $font-weight-button;
+  background-color: $color-button-secondary-bg;
+  color: $color-button-secondary-text;
+  border-color: $color-button-secondary-bg;
+
+  &:visited,
+  &:hover,
+  &:focus {
+    color: $color-button-secondary-text;
+  }
+}
 
 #main {
-  padding-top: clamp(2rem, 4vw, 3.25rem);
-  padding-bottom: clamp(2rem, 4vw, 3.5rem);
+  padding-top: clamp(1.6rem, 3.2vw, 2.6rem);
+  padding-bottom: clamp(1.8rem, 3.4vw, 2.85rem);
 }
 
 .masthead {
@@ -10,12 +71,209 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 0.2rem 0.75rem rgba(#000, 0.16);
+  color: $color-background;
+  background-color: $color-header-bg;
+  border-bottom-color: $color-border;
+  box-shadow: 0 0.2rem 0.75rem rgba($color-text, 0.16);
+}
+
+.masthead .greedy-nav {
+  background: $color-header-bg;
+
+  a,
+  .site-title,
+  .site-subtitle,
+  .masthead__menu-item a,
+  .masthead__menu-button,
+  .masthead__menu-item {
+    color: $color-background;
+    font-size: clamp(0.76rem, 0.86vw, 0.88rem);
+    font-weight: $font-weight-navigation;
+  }
+
+  .site-title {
+    font-size: clamp(0.9rem, 1vw, 1rem);
+  }
+
+  .site-subtitle {
+    font-size: 0.58rem;
+  }
+
+  .visible-links a,
+  .masthead__menu-button {
+    position: relative;
+    display: block;
+    margin-inline: 0.72rem;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    font: inherit;
+    line-height: inherit;
+    color: $color-background;
+    background: transparent;
+    box-shadow: none;
+    appearance: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: $color-background;
+      background: transparent;
+      outline: 0;
+      box-shadow: none;
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba($color-background, 0.72);
+      outline-offset: 0.24rem;
+      border-radius: 0.12rem;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset-inline-start: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      background: $color-brand;
+      transition: $global-transition;
+      transform: scaleX(0) translate3d(0, 0, 0);
+    }
+
+    &:hover::before {
+      transform: scaleX(1);
+    }
+  }
+
+  .visible-links {
+    overflow: visible;
+  }
+
+  .masthead__menu-item {
+    position: relative;
+  }
+
+  .masthead__menu-item--has-children > a::after,
+  .masthead__menu-item--has-children > .masthead__menu-button::after {
+    content: "";
+    display: inline-block;
+    margin-left: 0.35rem;
+    border: 0.28em solid transparent;
+    border-top-color: currentColor;
+    vertical-align: -0.14em;
+  }
+
+  .masthead__submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 20;
+    display: none;
+    min-width: 13rem;
+    margin: 0;
+    padding: 0.45rem 0;
+    list-style: none;
+    border: 1px solid $color-surface-muted;
+    background: $color-header-bg;
+    box-shadow: 0 0.65rem 1.4rem rgba($color-text, 0.18);
+
+    a {
+      margin: 0;
+      padding: 0.55rem 0.85rem;
+      white-space: nowrap;
+
+      &:hover,
+      &:focus {
+        color: $color-background;
+        background: rgba($color-background, 0.08);
+        outline: 0;
+      }
+
+      &:focus-visible {
+        outline: 2px solid rgba($color-background, 0.72);
+        outline-offset: -0.2rem;
+      }
+    }
+  }
+
+  .masthead__menu-item--has-children:hover > .masthead__submenu,
+  .masthead__menu-item--has-children:focus-within > .masthead__submenu {
+    display: block;
+  }
+
+  .hidden-links {
+    border-color: $color-surface-muted;
+    background: $color-header-bg;
+
+    a {
+      color: $color-background;
+
+      &:hover,
+      &:focus {
+        color: $color-background;
+        background: transparent;
+        text-decoration: underline;
+      }
+    }
+
+    .masthead__submenu {
+      position: static;
+      display: block;
+      min-width: 0;
+      padding: 0 0 0.35rem;
+      border: 0;
+      box-shadow: none;
+
+      a {
+        padding-left: 1.5rem;
+        font-size: 0.9em;
+      }
+    }
+
+    &::before {
+      border-color: $color-surface-muted transparent;
+    }
+
+    &::after {
+      border-color: $color-header-bg transparent;
+    }
+  }
+
+  .search__toggle {
+    color: $color-background;
+
+    &:hover,
+    &:focus {
+      color: $color-background;
+      text-decoration: underline;
+    }
+  }
+
+  .navicon,
+  .navicon::before,
+  .navicon::after,
+  .greedy-nav__toggle:hover .navicon,
+  .greedy-nav__toggle:hover .navicon::before,
+  .greedy-nav__toggle:hover .navicon::after {
+    background: $color-background;
+  }
+
+  .greedy-nav__toggle.close .navicon {
+    background: transparent;
+  }
 }
 
 .page__footer {
   position: static;
-  margin-top: clamp(4rem, 7vw, 6rem);
+  margin-top: clamp(3rem, 5.5vw, 4.75rem);
+  color: $color-background;
+  background-color: $color-footer-bg;
+
+  a {
+    color: $color-background;
+  }
 }
 
 .page__content {
@@ -29,16 +287,16 @@
 .pf-kicker,
 .pf-meta {
   margin: 0 0 0.45rem;
-  color: mix(#000, $primary-color, 35%);
+  color: $color-muted-text;
   font-size: $type-size-7;
-  font-weight: 800;
+  font-weight: $font-weight-label;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .pf-meta {
-  color: mix(#000, $text-color, 18%);
-  font-weight: 700;
+  color: $color-muted-text;
+  font-weight: $font-weight-label;
   letter-spacing: 0;
   text-transform: none;
 }
@@ -46,7 +304,7 @@
 .pf-link {
   display: inline-flex;
   align-items: center;
-  font-weight: 800;
+  font-weight: $font-weight-button;
 
   &::after {
     content: ">";
@@ -75,7 +333,7 @@
   align-items: end;
   margin-bottom: clamp(2rem, 5vw, 3.5rem);
   padding: clamp(1rem, 2.6vw, 1.5rem);
-  border-block: 1px solid $border-color;
+  border-block: 1px solid $color-border;
 
   h2 {
     margin: 0;
@@ -91,7 +349,7 @@
     label {
       margin: 0;
       font-size: clamp(0.9rem, 1.2vw, 1rem);
-      font-weight: 800;
+      font-weight: $font-weight-label;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
@@ -102,10 +360,10 @@
       min-height: 2.5rem;
       margin: 0.25rem 0 0;
       padding: 0.4rem 2rem 0.4rem 0.65rem;
-      border: 1px solid $border-color;
+      border: 1px solid $color-border;
       border-radius: $border-radius;
-      color: $text-color;
-      background: $background-color;
+      color: $color-text;
+      background: $color-section-bg;
       font-size: clamp(0.95rem, 1.25vw, 1.05rem);
       text-transform: none;
     }
@@ -122,9 +380,9 @@
     grid-column: 1 / -1;
     min-height: 1.5em;
     margin: 0;
-    color: $muted-text-color;
+    color: $color-muted-text;
     font-size: $type-size-6;
-    font-weight: 700;
+    font-weight: $font-weight-label;
   }
 
   &__empty {
@@ -138,7 +396,7 @@
 .pf-featured-post,
 .pf-events-list,
 .pf-details-grid {
-  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: clamp(2rem, 5vw, 3.75rem);
 }
 
 .pf-hero {
@@ -156,10 +414,10 @@
     min-height: clamp(14rem, 34vw, 23rem);
     place-items: center;
     overflow: hidden;
-    border: 1px solid mix(#000, $border-color, 6%);
+    border: 1px solid $color-border;
     background:
-      linear-gradient(135deg, rgba($primary-color, 0.17), rgba(#fff, 0.72)),
-      radial-gradient(circle at 20% 20%, rgba($primary-color, 0.2), transparent 32%);
+      linear-gradient(135deg, rgba($color-section-bg, 0.72), rgba($color-background, 0.92)),
+      radial-gradient(circle at 20% 20%, rgba($color-secondary, 0.2), transparent 32%);
   }
 
   img {
@@ -177,36 +435,37 @@
   h1 {
     max-width: 24ch;
     margin-top: 0;
-    font-size: clamp(1.55rem, 3.25vw, 2.9rem);
-    line-height: 1.08;
+    font-size: clamp(1.45rem, 2.7vw, 2.45rem);
+    line-height: 1.12;
   }
 
   p {
     max-width: 42rem;
+    font-size: clamp(0.94rem, 1.05vw, 1rem);
   }
 }
 
 .pf-panel,
 .pf-event {
-  border: 1px solid $border-color;
+  border: 1px solid $color-border;
   border-radius: $border-radius;
-  background: mix(#fff, $background-color, 70%);
+  background: $color-background;
 }
 
 .pf-card,
 .pf-person,
 .pf-detail,
 .pf-featured-post {
-  border: 1px solid mix(#000, $primary-color, 8%);
+  border: 1px solid $color-border;
   border-radius: $border-radius;
-  background: linear-gradient(135deg, rgba($primary-color, 0.08), rgba($background-color, 0.92));
+  background: $color-section-bg;
 }
 
 .pf-person__role {
   margin-top: -0.25rem;
-  color: mix(#000, $muted-text-color, 12%);
+  color: $color-muted-text;
   font-size: $type-size-7;
-  font-weight: 800;
+  font-weight: $font-weight-label;
   text-transform: uppercase;
 }
 
@@ -228,7 +487,7 @@
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  background: $section-background-color;
+  background: $color-section-bg;
 }
 
 .pf-person__body {
@@ -254,8 +513,8 @@
 
   h1 {
     margin-top: 0;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    line-height: 1;
+    font-size: clamp(1.75rem, 3.25vw, 2.85rem);
+    line-height: 1.06;
   }
 
   p {
@@ -296,21 +555,22 @@
   left: 50%;
   width: 100vw;
   margin-left: -50vw;
-  padding: clamp(1.35rem, 4vw, 2.5rem) max(1rem, calc((100vw - #{$max-width}) / 2 + 1rem));
-  background: $section-background-color;
+  padding: clamp(1.1rem, 3.2vw, 2rem) max(1rem, calc((100vw - #{$max-width}) / 2 + 1rem));
+  background: $color-secondary;
   text-align: center;
 
   .pf-kicker {
-    color: $primary-color;
+    color: $color-background;
   }
 
   h2 {
     max-width: 38ch;
     margin-inline: auto;
     border-bottom: 0;
-    color: $primary-color;
-    font-size: clamp(1.35rem, 2.5vw, 2.15rem);
-    line-height: 1.12;
+    color: $color-background;
+    font-size: clamp(1.18rem, 2vw, 1.75rem);
+    font-weight: $font-weight-quote;
+    line-height: 1.18;
   }
 }
 
@@ -318,9 +578,9 @@
   position: relative;
   left: 50%;
   width: 100vw;
-  margin: 0 0 clamp(2.5rem, 6vw, 4.5rem) -50vw;
-  padding: clamp(2rem, 5vw, 3.5rem) max(1rem, calc((100vw - #{$max-width}) / 2 + 1rem));
-  background: $primary-color;
+  margin: 0 0 clamp(2rem, 5vw, 3.75rem) -50vw;
+  padding: clamp(1.6rem, 4vw, 2.85rem) max(1rem, calc((100vw - #{$max-width}) / 2 + 1rem));
+  background: $color-section-bg;
 
   &__inner {
     max-width: $max-width;
@@ -340,14 +600,14 @@
   min-height: 22rem;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid mix(#000, $primary-color, 8%);
+  border: 1px solid $color-border;
   border-radius: $border-radius;
-  background: $background-color;
+  background: $color-background;
 
   &:hover,
   &:focus-within {
-    border-color: $primary-color;
-    box-shadow: 0 0.55rem 1.4rem rgba(#000, 0.13);
+    border-color: $color-accent;
+    box-shadow: 0 0.55rem 1.4rem rgba($color-text, 0.13);
     transform: translateY(-2px);
   }
 
@@ -360,7 +620,7 @@
   &__media {
     aspect-ratio: 16 / 8;
     overflow: hidden;
-    background: $section-background-color;
+    background: $color-section-bg;
 
     img {
       width: 100%;
@@ -377,29 +637,31 @@
 
     h3 {
       margin-top: 0;
-      font-size: clamp(1.35rem, 2.4vw, 1.85rem);
-      line-height: 1.12;
+      font-family: $font-body;
+      font-weight: $font-weight-card-heading;
+      font-size: clamp(1.08rem, 1.6vw, 1.38rem);
+      line-height: 1.18;
     }
 
     .pf-link {
       margin-top: auto;
       padding-top: 1rem;
-      font-size: clamp(1rem, 1.4vw, 1.1rem);
+      font-size: clamp(0.92rem, 1.1vw, 1rem);
     }
   }
 
   &--learn {
-    background: linear-gradient(145deg, rgba($primary-color, 0.08), $background-color 64%);
+    background: linear-gradient(145deg, $color-section-bg, $color-background 64%);
   }
 
   &--events {
-    background: linear-gradient(145deg, rgba($button-background-color, 0.07), $background-color 64%);
+    background: linear-gradient(145deg, $color-section-bg, $color-background 64%);
   }
 
   &__date {
     margin: 0 0 0.5rem;
-    color: mix(#000, $primary-color, 35%);
-    font-weight: 800;
+    color: $color-muted-text;
+    font-weight: $font-weight-label;
   }
 }
 
@@ -418,7 +680,7 @@
 
   figcaption {
     margin-top: 0.55rem;
-    color: $muted-text-color;
+    color: $color-muted-text;
     font-size: $type-size-6;
     line-height: 1.45;
     text-align: center;
@@ -448,25 +710,25 @@
   min-height: clamp(11rem, 22vw, 16rem);
   max-height: 20rem;
   object-fit: cover;
-  border: 1px solid $border-color;
+  border: 1px solid $color-border;
   border-radius: $border-radius;
 }
 
 .pf-image-tile {
   min-height: clamp(11rem, 22vw, 16rem);
   border-radius: $border-radius;
-  border: 1px solid $border-color;
+  border: 1px solid $color-border;
 
   &--sun {
     background:
-      linear-gradient(150deg, rgba(#f6d56f, 0.76), rgba($primary-color, 0.22)),
-      repeating-linear-gradient(45deg, transparent 0 18px, rgba(#fff, 0.38) 18px 20px);
+      linear-gradient(150deg, rgba($color-section-bg, 0.95), rgba($color-background, 0.88)),
+      repeating-linear-gradient(45deg, transparent 0 18px, rgba($color-background, 0.62) 18px 20px);
   }
 
   &--leaf {
     background:
-      linear-gradient(150deg, rgba(#5f8f63, 0.7), rgba(#f7f2df, 0.85)),
-      repeating-linear-gradient(-35deg, transparent 0 20px, rgba(#fff, 0.35) 20px 22px);
+      linear-gradient(150deg, rgba($color-secondary, 0.45), rgba($color-background, 0.88)),
+      repeating-linear-gradient(-35deg, transparent 0 20px, rgba($color-background, 0.55) 20px 22px);
   }
 }
 
@@ -477,9 +739,9 @@
   justify-content: space-between;
   gap: 1.5rem;
   padding: clamp(1.25rem, 4vw, 2rem);
-  border: 1px solid mix(#000, $primary-color, 10%);
+  border: 1px solid $color-border;
   border-radius: $border-radius;
-  background: rgba($primary-color, 0.16);
+  background: $color-section-bg;
 
   h2 {
     max-width: 34rem;
@@ -528,7 +790,7 @@
     display: block;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background: $section-background-color;
+    background: $color-section-bg;
 
     img {
       width: 100%;
@@ -562,7 +824,7 @@
     display: block;
     min-height: clamp(17rem, 32vw, 25rem);
     overflow: hidden;
-    background: $section-background-color;
+    background: $color-section-bg;
 
     img {
       width: 100%;
@@ -588,17 +850,17 @@
   grid-template-columns: minmax(15rem, 0.9fr) minmax(18rem, 1.25fr);
   margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
   overflow: hidden;
-  border: 1px solid mix(#000, $primary-color, 8%);
+  border: 1px solid $color-border;
   border-radius: $border-radius;
-  color: $text-color;
-  background: mix(#fff, $background-color, 78%);
+  color: $color-text;
+  background: $color-background;
   text-decoration: none;
 
   &:hover,
   &:focus-within {
-    color: $text-color;
-    border-color: $primary-color;
-    box-shadow: 0 0.55rem 1.4rem rgba(#000, 0.13);
+    color: $color-text;
+    border-color: $color-accent;
+    box-shadow: 0 0.55rem 1.4rem rgba($color-text, 0.13);
     text-decoration: none;
     transform: translateY(-2px);
   }
@@ -612,8 +874,8 @@
   &__image {
     min-height: clamp(17rem, 36vw, 27rem);
     background:
-      linear-gradient(145deg, rgba($primary-color, 0.2), rgba(#fff, 0.5)),
-      $section-background-color;
+      linear-gradient(145deg, rgba($color-secondary, 0.3), rgba($color-background, 0.72)),
+      $color-section-bg;
 
     img {
       width: 100%;
@@ -628,8 +890,8 @@
     min-height: inherit;
     place-items: center;
     padding: 2rem;
-    color: mix(#000, $primary-color, 30%);
-    font-weight: 800;
+    color: $color-muted-text;
+    font-weight: $font-weight-label;
     text-align: center;
   }
 
@@ -663,9 +925,9 @@
 
   dt {
     margin-bottom: 0.15rem;
-    color: mix(#000, $primary-color, 35%);
+    color: $color-muted-text;
     font-size: $type-size-7;
-    font-weight: 800;
+    font-weight: $font-weight-label;
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
@@ -700,9 +962,9 @@
 
 .pf-coming-soon {
   padding: clamp(1.5rem, 4vw, 2.5rem);
-  border: 1px dashed mix(#000, $primary-color, 18%);
+  border: 1px dashed $color-secondary;
   border-radius: $border-radius;
-  background: rgba($primary-color, 0.07);
+  background: $color-section-bg;
   text-align: center;
 
   h3 {
@@ -728,7 +990,7 @@
     min-height: clamp(18rem, 38vw, 30rem);
     border-radius: $border-radius;
     object-fit: cover;
-    background: $section-background-color;
+    background: $color-section-bg;
   }
 
   h1 {
@@ -753,8 +1015,8 @@
     place-items: center;
     align-content: center;
     min-height: 9rem;
-    color: $button-text-color;
-    background: $button-background-color;
+    color: $color-button-primary-text;
+    background: $color-button-primary-bg;
 
     span,
     strong {
@@ -763,7 +1025,7 @@
     }
 
     span {
-      font-weight: 800;
+      font-weight: $font-weight-label;
       text-transform: uppercase;
     }
 
@@ -798,14 +1060,14 @@
 
 .announcement-banners {
   margin: 0;
-  background: $primary-color;
-  color: $text-color;
-  border-bottom: 1px solid mix(#000, $primary-color, 18%);
+  background: $color-section-bg;
+  color: $color-text;
+  border-bottom: 1px solid $color-border;
 
   &__inner {
     max-width: $max-width;
     margin-inline: auto;
-    padding: 0.75rem 1rem;
+    padding: 0.42rem 1rem;
   }
 }
 
@@ -813,31 +1075,39 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;
 
   &__text {
     margin: 0;
-    font-weight: 700;
+    font-size: 0.78rem;
+    font-weight: $font-weight-navigation;
+    line-height: 1.35;
   }
 
   &__button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 2.25rem;
-    padding: 0.45rem 0.85rem;
-    color: $button-text-color;
-    background: $button-background-color;
-    border: 1px solid $button-border-color;
+    min-height: 1.8rem;
+    padding: 0.28rem 0.65rem;
+    color: $color-button-primary-text;
+    background: $color-button-primary-bg;
+    border: 1px solid $color-button-primary-bg;
     border-radius: $border-radius;
-    font-weight: 700;
+    font-size: 0.72rem;
+    font-weight: $font-weight-button;
     white-space: nowrap;
+
+    &:visited {
+      color: $color-button-primary-text;
+    }
 
     &:hover,
     &:focus {
-      color: $button-text-color;
-      background: mix(#000, $button-background-color, 10%);
-      text-decoration: none;
+      color: $color-button-primary-text;
+      background: $color-button-primary-bg;
+      filter: brightness(0.93);
+      text-decoration: underline;
     }
   }
 }
@@ -849,7 +1119,7 @@
   align-items: start;
   padding-top: 1rem;
   padding-bottom: 1.75rem;
-  border-bottom: 1px solid rgba(#fff, 0.2);
+  border-bottom: 1px solid rgba($color-background, 0.2);
   margin-bottom: 1rem;
 }
 
@@ -858,14 +1128,14 @@
 .page__footer-follow {
   h2 {
     margin: 0 0 0.6rem;
-    color: $primary-color;
+    color: $color-background;
     font-size: $type-size-5;
   }
 
   p {
     max-width: 34rem;
     margin: 0 0 0.85rem;
-    color: $background-color;
+    color: $color-background;
   }
 }
 
@@ -873,9 +1143,9 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   max-width: 34rem;
-  border: 1px solid $primary-color;
+  border: 1px solid $color-section-bg;
   border-radius: $border-radius;
-  background: $background-color;
+  background: $color-background;
   overflow: hidden;
 
   input,
@@ -891,29 +1161,32 @@
     width: 100%;
     min-width: 0;
     padding: 0.45rem 0.75rem;
-    color: $text-color;
-    background: $background-color;
+    color: $color-text;
+    background: $color-background;
 
     &::placeholder {
-      color: mix(#fff, $text-color, 42%);
+      color: $color-muted-text;
     }
 
     &:focus {
-      outline: 2px solid $primary-color;
+      outline: 2px solid $color-focus;
       outline-offset: -2px;
     }
   }
 
   button {
     padding: 0.45rem 1rem;
-    color: $text-color;
-    background: $primary-color;
-    font-weight: 700;
+    color: $color-button-primary-text;
+    background: $color-button-primary-bg;
+    font-weight: $font-weight-button;
     cursor: pointer;
 
     &:hover,
     &:focus {
-      background: mix(#000, $primary-color, 8%);
+      color: $color-button-primary-text;
+      background: $color-button-primary-bg;
+      filter: brightness(0.93);
+      text-decoration: underline;
     }
   }
 }
@@ -924,7 +1197,7 @@
 }
 
 .page__footer-about h2 a {
-  color: $primary-color;
+  color: $color-background;
 }
 
 .page__footer-about h2,
@@ -938,14 +1211,14 @@
   justify-content: center;
   min-height: 2rem;
   padding: 0.25rem 0.4rem;
-  border: 1px solid rgba(#fff, 0.4);
+  border: 1px solid rgba($color-background, 0.4);
   border-radius: $border-radius;
-  font-weight: 700;
+  font-weight: $font-weight-button;
 
   &:hover,
   &:focus {
-    color: $text-color;
-    background: $primary-color;
+    color: $color-button-primary-text;
+    background: $color-button-primary-bg;
     text-decoration: none;
   }
 }
@@ -960,14 +1233,14 @@
 
   &:hover,
   &:focus {
-    color: $primary-color;
+    color: $color-section-bg;
     background: transparent;
   }
 }
 
 .page__footer .page__footer-button,
 .page__footer .page__footer-social {
-  color: $background-color;
+  color: $color-background;
 }
 
 .page__footer .page__footer-social--pending {
@@ -993,14 +1266,14 @@
   .page__footer-social {
     justify-content: flex-start;
     width: 100%;
-    color: $background-color;
+    color: $color-background;
     font-size: $type-size-6;
     line-height: 1.2;
 
     i {
       width: 1.15rem;
       margin-inline-end: 0.45rem;
-      color: $primary-color;
+      color: $color-section-bg;
       text-align: center;
     }
   }
@@ -1037,7 +1310,7 @@
 
   .pf-hero h1,
   .pf-page-intro h1 {
-    font-size: 2rem;
+    font-size: 1.72rem;
   }
 
   .pf-cta-band,

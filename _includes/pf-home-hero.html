@@ -1,4 +1,4 @@
-{% assign hero = include.hero %}
+{% assign hero = include.block | default: include.section | default: include.hero %}
 
 <section class="pf-hero pf-hero--home">
   <div class="pf-hero__media">

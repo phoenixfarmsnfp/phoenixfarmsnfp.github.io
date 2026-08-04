@@ -79,7 +79,7 @@
       text-align: center;
       text-decoration: none;
       color: $muted-text-color;
-      border: 1px solid mix(#000, $border-color, 25%);
+      border: 1px solid $color-border;
       border-radius: 0;
 
       &:hover {
@@ -88,7 +88,7 @@
 
       &.current,
       &.current.disabled {
-        color: #fff;
+        color: $color-button-primary-text;
         background: transparent;
       }
 
@@ -128,7 +128,7 @@
     text-align: center;
     text-decoration: none;
     color: $muted-text-color;
-    border: 1px solid mix(#000, $border-color, 25%);
+    border: 1px solid $color-border;
     border-radius: $border-radius;
 
     &:hover {
@@ -267,9 +267,9 @@
     border: 1px solid $border-color;
     border-radius: $border-radius;
     background: $background-color;
-    -webkit-box-shadow: 0 2px 4px 0 rgba(#000, 0.16),
-      0 2px 10px 0 rgba(#000, 0.12);
-    box-shadow: 0 2px 4px 0 rgba(#000, 0.16), 0 2px 10px 0 rgba(#000, 0.12);
+    -webkit-box-shadow: 0 2px 4px 0 rgba($color-text, 0.16),
+      0 2px 10px 0 rgba($color-text, 0.12);
+    box-shadow: 0 2px 4px 0 rgba($color-text, 0.16), 0 2px 10px 0 rgba($color-text, 0.12);
 
     &.hidden {
       display: none;
@@ -381,25 +381,25 @@
       }
 
       &:hover {
-        color: #fff;
+        color: $color-button-secondary-text;
         border-color: $gray;
-        background-color: mix(white, #000, 20%);
+        background-color: $color-button-secondary-bg;
 
         &:before,
         &:after {
-          background-color: #fff;
+          background-color: $color-button-secondary-text;
         }
       }
     }
 
     /* selected*/
     input:checked + label {
-      color: white;
-      background-color: mix(white, #000, 20%);
+      color: $color-button-secondary-text;
+      background-color: $color-button-secondary-bg;
 
       &:before,
       &:after {
-        background-color: #fff;
+        background-color: $color-button-secondary-text;
       }
     }
 
@@ -511,7 +511,7 @@
   box-shadow: $box-shadow;
 
   .nav__title {
-    color: #fff;
+    color: $color-button-primary-text;
     font-size: $type-size-6;
     background: $primary-color;
     border-start-start-radius: $border-radius;

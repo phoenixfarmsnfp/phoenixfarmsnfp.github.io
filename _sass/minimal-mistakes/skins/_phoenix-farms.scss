@@ -2,147 +2,168 @@
    Phoenix Farms skin
    ========================================================================== */
 
-/* Colors */
-$background-color: #FAF8F0 !default;
-$text-color: #252317 !default;
-$muted-text-color: #66705A !default;
-$section-background-color: #66705A !default;
-$primary-color: #E4E9DD !default; // soft linen accent
-$accent-color: #8F1822 !default; // logo red accent
-$border-color: #252317 !default;
-$footer-background-color: #252317 !default;
-$header-background-color: #252317 !default;
-$link-color: $accent-color !default;
-$link-color-hover: mix(#000, $accent-color, 25%) !default;
-$masthead-link-color: $primary-color !default;
-$masthead-link-color-hover: #fff !default;
-$navicon-link-color-hover: $primary-color !default;
+/* Palette primitives */
+$color-brand: #7E1724 !default;
+$color-surface-muted: #E6E6E5 !default;
+$color-background: #F7F6F0 !default;
+$color-secondary: #788572 !default;
+$color-text: #25251F !default;
 
-$button-background-color: $primary-color !default;
-$button-text-color: $text-color !default;
-$button-border-color: $primary-color !default;
-$x-large: 1360px !default;
-$max-width: 1320px !default;
-$header-font-family: Garamond, 'Noto Serif Display', Georgia, serif !default;
-$caption-font-family: $header-font-family !default;
+/* Semantic roles */
+$color-page-bg: $color-background !default;
+$color-section-bg: $color-surface-muted !default;
+$color-header-bg: $color-text !default;
+$color-footer-bg: $color-text !default;
+$color-heading: $color-text !default;
+$color-body-text: $color-text !default;
+$color-muted-text: mix($color-text, $color-secondary, 68%) !default;
+$color-link: $color-brand !default;
+$color-accent: $color-brand !default;
+$color-button-primary-bg: $color-brand !default;
+$color-button-primary-text: $color-background !default;
+$color-button-secondary-bg: $color-text !default;
+$color-button-secondary-text: $color-background !default;
+$color-border: $color-surface-muted !default;
+$color-focus: $color-brand !default;
+
+/* Minimal Mistakes variable bridge */
+$background-color: $color-page-bg !default;
+$text-color: $color-body-text !default;
+$muted-text-color: $color-muted-text !default;
+$section-background-color: $color-section-bg !default;
+$primary-color: $color-accent !default;
+$accent-color: $color-accent !default;
+$border-color: $color-border !default;
+$footer-background-color: $color-footer-bg !default;
+$header-background-color: $color-header-bg !default;
+$link-color: $color-link !default;
+$link-color-hover: $color-link !default;
+$link-color-visited: $color-link !default;
+$masthead-link-color: $color-background !default;
+$masthead-link-color-hover: $color-surface-muted !default;
+$navicon-link-color-hover: $color-surface-muted !default;
+
+$button-background-color: $color-button-primary-bg !default;
+$button-text-color: $color-button-primary-text !default;
+$button-border-color: $color-button-primary-bg !default;
+$doc-font-size: 16px !default;
+$doc-font-size-medium: 17px !default;
+$doc-font-size-large: 18px !default;
+$doc-font-size-x-large: 19px !default;
+$x-large: 1280px !default;
+$max-width: 1180px !default;
 $border-radius: 6px !default;
 
-/* Code background - slightly darker than main background */
-$code-background-color: #f5e5e6 !default;
-$code-background-color-dark: #E4E9DD !default;
+/* Font primitives */
+$font-heading: 'Petrona', Georgia, 'Times New Roman', serif !default;
+$font-body: 'Sora', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !default;
+$font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace !default;
 
-/* Form elements */
-$form-background-color: #f5e5e6 !default;
+/* Semantic font roles */
+$font-display: $font-heading !default;
+$font-subheading: $font-heading !default;
+$font-body-text: $font-body !default;
+$font-label: $font-body !default;
+$font-navigation: $font-body !default;
+$font-button: $font-body !default;
+$font-caption: $font-body !default;
+$font-code: $font-mono !default;
+
+/* Semantic font weights */
+$font-weight-body: 400 !default;
+$font-weight-navigation: 500 !default;
+$font-weight-display: 550 !default;
+$font-weight-heading: 550 !default;
+$font-weight-card-heading: 600 !default;
+$font-weight-label: 700 !default;
+$font-weight-button: 600 !default;
+$font-weight-quote: 550 !default;
+
+/* Semantic font variation settings */
+$font-variation-heading: normal !default;
+
+/* Minimal Mistakes font bridge */
+$serif: $font-heading !default;
+$sans-serif: $font-body !default;
+$sans-serif-narrow: $font-navigation !default;
+$monospace: $font-code !default;
+$global-font-family: $font-body-text !default;
+$header-font-family: $font-heading !default;
+$caption-font-family: $font-caption !default;
+
+/* Code and form elements */
+$code-background-color: $color-section-bg !default;
+$code-background-color-dark: $color-text !default;
+$form-background-color: $color-section-bg !default;
 
 /* Status colors */
 $success-color: $accent-color !default;
-$warning-color: #d67f05 !default;
-$danger-color: #ee5f5b !default;
+$warning-color: $color-button-secondary-bg !default;
+$danger-color: $color-brand !default;
 $info-color: $accent-color !default;
-$focus-color: $primary-color !default;
-$active-color: mix(#fff, $primary-color, 80%) !default;
+$focus-color: $color-focus !default;
+$active-color: $color-section-bg !default;
+$yiq-contrasted-dark-default: $color-text !default;
+$yiq-contrasted-light-default: $color-background !default;
 
-/* Phoenix Farms syntax highlighting (warm earth tones) */
-$base00: #252317 !default;
-$base01: #2d2620 !default;
-$base02: #3f3830 !default;
-$base03: #66705A !default;
-$base04: #8a8076 !default;
-$base05: #E4E9DD !default;
-$base06: #eee5dd !default;
-$base07: #FAF8F0 !default;
-$base08: #a0522d !default;
-$base09: #cd853f !default;
-$base0a: #daa520 !default;
+/* Phoenix Farms syntax highlighting */
+$base00: $color-text !default;
+$base01: $color-text !default;
+$base02: $color-secondary !default;
+$base03: $color-secondary !default;
+$base04: $color-surface-muted !default;
+$base05: $color-background !default;
+$base06: $color-surface-muted !default;
+$base07: $color-background !default;
+$base08: $color-brand !default;
+$base09: $color-brand !default;
+$base0a: $color-secondary !default;
 $base0b: $accent-color !default;
-$base0c: #20b2aa !default;
-$base0d: #4682b4 !default;
-$base0e: #9370db !default;
-$base0f: #8b4513 !default;
+$base0c: $color-secondary !default;
+$base0d: $color-brand !default;
+$base0e: $color-brand !default;
+$base0f: $color-secondary !default;
 
-/* Palette behavior */
-html,
-body {
-  background-color: $background-color;
-  color: $text-color;
+:root {
+  --color-brand: #{$color-brand};
+  --color-background: #{$color-background};
+  --color-surface-muted: #{$color-surface-muted};
+  --color-secondary: #{$color-secondary};
+  --color-text: #{$color-text};
+  --color-page-bg: #{$color-page-bg};
+  --color-section-bg: #{$color-section-bg};
+  --color-header-bg: #{$color-header-bg};
+  --color-footer-bg: #{$color-footer-bg};
+  --color-heading: #{$color-heading};
+  --color-body-text: #{$color-body-text};
+  --color-muted-text: #{$color-muted-text};
+  --color-link: #{$color-link};
+  --color-accent: #{$color-accent};
+  --color-button-primary-bg: #{$color-button-primary-bg};
+  --color-button-primary-text: #{$color-button-primary-text};
+  --color-button-secondary-bg: #{$color-button-secondary-bg};
+  --color-button-secondary-text: #{$color-button-secondary-text};
+  --color-border: #{$color-border};
+  --color-focus: #{$color-focus};
+  --font-heading: #{$font-heading};
+  --font-body: #{$font-body};
+  --font-mono: #{$font-mono};
+  --font-display: #{$font-display};
+  --font-subheading: #{$font-subheading};
+  --font-body-text: #{$font-body-text};
+  --font-label: #{$font-label};
+  --font-navigation: #{$font-navigation};
+  --font-button: #{$font-button};
+  --font-caption: #{$font-caption};
+  --font-code: #{$font-code};
+  --font-weight-body: #{$font-weight-body};
+  --font-weight-navigation: #{$font-weight-navigation};
+  --font-weight-display: #{$font-weight-display};
+  --font-weight-heading: #{$font-weight-heading};
+  --font-weight-card-heading: #{$font-weight-card-heading};
+  --font-weight-label: #{$font-weight-label};
+  --font-weight-button: #{$font-weight-button};
+  --font-weight-quote: #{$font-weight-quote};
+  --font-variation-heading: #{$font-variation-heading};
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: $muted-text-color;
-  font-family: $header-font-family;
-}
-
-a {
-  color: $accent-color;
-}
-
-.page__footer a {
-  color: $primary-color;
-}
-
-a:hover,
-a:focus {
-  color: $link-color-hover;
-}
-
-.masthead {
-  background-color: $header-background-color;
-  color: $button-text-color;
-  border-bottom-color: $border-color;
-}
-
-.masthead .greedy-nav {
-  background: $header-background-color;
-}
-
-.masthead a,
-.masthead .site-title,
-.masthead .site-subtitle,
-.masthead .masthead__menu-item a,
-.masthead__menu-item {
-  color: $primary-color;
-}
-
-.masthead__menu-item a:hover,
-.page__footer a {
-  color: $background-color;
-}
-
-.page__footer {
-  background-color: $footer-background-color;
-  color: $button-text-color;
-}
-
-.btn {
-  background-color: $button-background-color;
-  border: 1px solid $button-border-color;
-  color: $button-text-color;
-}
-
-.btn--primary {
-  background-color: $primary-color;
-  color: $text-color;
-  border-color: $primary-color;
-}
-
-.btn:hover,
-.btn:focus {
-  background-color: mix(#000, $button-background-color, 8%);
-  color: $button-text-color;
-}
-
-.btn--primary:hover,
-.btn--primary:focus {
-  background-color: mix(#000, $primary-color, 10%);
-}
-
-.btn--inverse {
-  background-color: #fff;
-  color: $text-color;
-  border: 1px solid $button-border-color;
-}

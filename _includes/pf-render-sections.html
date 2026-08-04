@@ -1,0 +1,11 @@
+{% assign sections = include.sections %}
+{% for item in sections %}
+  {% if item.ref %}
+    {% assign block = site.data.blocks[item.ref] %}
+  {% else %}
+    {% assign block = item %}
+  {% endif %}
+  {% if block %}
+    {% include pf-section.html block=block %}
+  {% endif %}
+{% endfor %}

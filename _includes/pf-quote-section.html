@@ -1,4 +1,4 @@
-{% assign quote = include.quote %}
+{% assign quote = include.block | default: include.section | default: include.quote %}
 
 <section class="pf-section pf-section--quote">
   <div>

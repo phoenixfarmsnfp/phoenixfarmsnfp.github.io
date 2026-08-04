@@ -12,3 +12,5 @@ plants:
 thumbnail: "/assets/images/forest_images/first-presbyterian-church-forest.jpg"
 thumbnail_alt: "First Presbyterian Church Forest"
 ---
+
+We have recently recieved a grant that will allow us to plant a number of trees on the property! 

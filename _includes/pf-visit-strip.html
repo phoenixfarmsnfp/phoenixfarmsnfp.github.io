@@ -1,4 +1,4 @@
-{% assign visit = include.visit %}
+{% assign visit = include.block | default: include.section | default: include.visit %}
 
 <section class="pf-section pf-visit-strip">
   <div>

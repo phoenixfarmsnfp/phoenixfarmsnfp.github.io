@@ -1,4 +1,4 @@
-{% assign cta = include.cta %}
+{% assign cta = include.block | default: include.section | default: include.cta %}
 {% assign cta_class = include.class | default: "" %}
 
 <section class="pf-section pf-cta-band{% if cta_class %} {{ cta_class }}{% endif %}">

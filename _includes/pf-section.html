@@ -1,0 +1,34 @@
+{% assign block = include.block %}
+
+{% case block.type %}
+  {% when "home_hero" %}
+    {% include pf-home-hero.html block=block %}
+  {% when "quote" %}
+    {% include pf-quote-section.html block=block %}
+  {% when "home_gateway" %}
+    {% include pf-home-gateway.html block=block %}
+  {% when "donate_feature" %}
+    {% include pf-donate-feature.html block=block %}
+  {% when "page_intro" %}
+    {% include pf-page-intro.html block=block class=block.class %}
+  {% when "visit_strip" %}
+    {% include pf-visit-strip.html block=block %}
+  {% when "people_section" %}
+    {% include pf-people-section.html block=block %}
+  {% when "partners_section" %}
+    {% include pf-partners-section.html block=block %}
+  {% when "donate_hero" %}
+    {% include pf-donate-hero.html block=block %}
+  {% when "card_grid" %}
+    {% include pf-card-grid.html block=block grid_class=block.grid_class %}
+  {% when "cta_band" %}
+    {% include pf-cta-band.html block=block class=block.class %}
+  {% when "coming_soon" %}
+    {% include pf-coming-soon.html block=block heading_id=block.heading_id %}
+  {% when "events_list" %}
+    {% include pf-events-list.html block=block %}
+  {% when "forest_index" %}
+    {% include pf-forest-index.html block=block %}
+  {% when "blog_index" %}
+    {% include pf-blog-index.html block=block %}
+{% endcase %}

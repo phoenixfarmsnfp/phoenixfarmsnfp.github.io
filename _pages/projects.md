@@ -1,11 +1,11 @@
 ---
-title: "Living Project Blog"
-permalink: /blog/
+title: "Projects"
+permalink: /projects/
 layout: single
 author_profile: false
 sections:
-  - ref: blog_intro
-  - ref: blog_index
+  - ref: projects_intro
+  - ref: generic_coming_soon
 ---
 
 {% include pf-render-sections.html sections=page.sections %}

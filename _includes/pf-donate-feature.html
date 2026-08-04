@@ -1,4 +1,4 @@
-{% assign feature = include.feature %}
+{% assign feature = include.block | default: include.section | default: include.feature %}
 
 <section class="pf-section pf-donate-feature">
   <div>

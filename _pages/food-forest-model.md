@@ -1,10 +1,10 @@
 ---
-title: "Resources"
-permalink: /resources/
+title: "Food-forest Model"
+permalink: /food-forest-model/
 layout: single
 author_profile: false
 sections:
-  - ref: resources_intro
+  - ref: food_forest_model_intro
   - ref: generic_coming_soon
 ---
 

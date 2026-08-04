@@ -1,4 +1,4 @@
-{% assign section = include.section %}
+{% assign section = include.block | default: include.section %}
 {% assign grid_class = include.grid_class | default: "pf-card-grid" %}
 
 <section class="pf-section">
