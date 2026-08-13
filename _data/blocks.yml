@@ -5,7 +5,7 @@ home_announcement:
     - text: "Stop by and grab some fruit!"
       button_label: "Sign up"
       use_tally: false
-      enabled: true
+      enabled: false
 
 home_hero:
   type: home_hero
@@ -141,7 +141,7 @@ generic_coming_soon:
   type: coming_soon
   kicker: "Coming Soon"
   heading: "More details are coming soon."
-  text: "We are still shaping this part of the site. Check back soon for updates."
+  text: "We are still building this part of the site. Check back soon for updates."
 
 food_forest_model_intro:
   type: page_intro

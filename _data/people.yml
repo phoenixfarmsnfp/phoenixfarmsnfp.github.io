@@ -30,6 +30,14 @@
   bio:
     - "Jules is a recent UChicago alum ('23) who has a passion for all things sustainability and food. An amateur gardener and honey taster, she is interested in bringing equitable food systems to the Southside."
 
+- name: "Julia Youssef"
+  role: "Current board member"
+  group: "current_board"
+  image: "/assets/images/board_images/julia.jpg"
+  image_alt: "Julia Youssef"
+  bio:
+    - "Julia is a UChicago alum ('25), whose studies in geosciences inspired broader interest in the environment, sustainability, and community. She current researches topics in macroevolution. phylogenetics, and paleoecology with the Slater Lab at the University of Chicago. An amateur gardener, Phoenix Farms offers her a way to engage with ecology directly, and contribute to systems of community that can outlast any one person's work. Outside of her research, Julia is interested in art, writing, and history."
+
 - name: "Iman"
   role: "2026 Summer intern"
   group: "current_board"
