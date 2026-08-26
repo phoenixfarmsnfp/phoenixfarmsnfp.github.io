@@ -1,0 +1,17 @@
+{% assign section = include.section %}
+
+{% if section.toggle and section.text %}
+  <div class="pf-resource-embed__text">
+    {{ section.text | markdownify }}
+  </div>
+{% endif %}
+
+<iframe
+  src="{{ section.url }}"
+  title="{{ section.iframe_title | default: section.heading | escape }}"
+  loading="lazy"
+></iframe>
+
+<p class="pf-resource-embed__fallback">
+  <a href="{{ section.url }}" target="_blank" rel="noopener noreferrer">{{ section.link_label | default: "Open embedded resource" }}</a>
+</p>

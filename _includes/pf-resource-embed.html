@@ -1,0 +1,29 @@
+{% assign section = include.block | default: include.section %}
+{% assign heading_id = section.heading_id | default: section.heading | slugify %}
+
+{% if section.url %}
+<section class="pf-resource-embed{% if section.class %} {{ section.class }}{% endif %}" aria-labelledby="{{ heading_id }}">
+  {% if section.toggle %}
+    <details class="pf-resource-embed__toggle"{% if section.open %} open{% endif %}>
+      <summary class="pf-resource-embed__summary">
+        <span>
+          {% if section.kicker %}<span class="pf-kicker">{{ section.kicker }}</span>{% endif %}
+          {% if section.heading %}<span id="{{ heading_id }}" class="pf-resource-embed__title">{{ section.heading }}</span>{% endif %}
+        </span>
+      </summary>
+
+      <div class="pf-resource-embed__body">
+        {% include pf-resource-embed-frame.html section=section %}
+      </div>
+    </details>
+  {% else %}
+    <div class="pf-section__heading">
+      {% if section.kicker %}<p class="pf-kicker">{{ section.kicker }}</p>{% endif %}
+      {% if section.heading %}<h2 id="{{ heading_id }}">{{ section.heading }}</h2>{% endif %}
+      {% if section.text %}{{ section.text | markdownify }}{% endif %}
+    </div>
+
+    {% include pf-resource-embed-frame.html section=section %}
+  {% endif %}
+</section>
+{% endif %}

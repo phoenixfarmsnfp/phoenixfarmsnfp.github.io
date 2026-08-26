@@ -21,7 +21,12 @@ main:
   - title: "Get Involved"
     url: /events/
   - title: "Resources"
-    url: /resources/
+    dropdown_only: true
+    children:
+      - title: "Resources"
+        url: /resources/
+      - title: "FAQ"
+        url: /faq/
   - title: "News & Blog"
     url: /blog/
   - title: "Donate"

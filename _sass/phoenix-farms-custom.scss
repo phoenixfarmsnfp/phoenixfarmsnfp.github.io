@@ -393,6 +393,8 @@ nav a {
 .pf-hero,
 .pf-page-intro,
 .pf-section,
+.pf-toggle-callouts,
+.pf-resource-embed,
 .pf-featured-post,
 .pf-events-list,
 .pf-details-grid {
@@ -975,6 +977,170 @@ nav a {
   p:last-child {
     margin-bottom: 0;
   }
+}
+
+.pf-toggle-callouts {
+  max-width: 56rem;
+}
+
+.pf-toggle-callouts__list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.pf-toggle-callout {
+  border: 1px dashed $color-secondary;
+  border-radius: $border-radius;
+  background: $color-section-bg;
+
+  &[open] {
+    background: $color-background;
+  }
+}
+
+.pf-toggle-callout__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.75rem;
+  padding: 1rem clamp(1rem, 2.6vw, 1.5rem);
+  color: $color-heading;
+  font-family: $font-body;
+  font-weight: $font-weight-card-heading;
+  line-height: 1.25;
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::after {
+    content: "+";
+    flex: 0 0 auto;
+    display: grid;
+    width: 1.75rem;
+    height: 1.75rem;
+    place-items: center;
+    border: 1px solid $color-secondary;
+    border-radius: 50%;
+    color: $color-button-primary-text;
+    background: $color-button-primary-bg;
+    font-weight: $font-weight-button;
+    line-height: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 0.2rem;
+  }
+}
+
+.pf-toggle-callout[open] .pf-toggle-callout__summary::after {
+  content: "-";
+}
+
+.pf-toggle-callout__question {
+  min-width: 0;
+}
+
+.pf-toggle-callout__content {
+  max-width: 44rem;
+  padding: 0 clamp(1rem, 2.6vw, 1.5rem) clamp(1rem, 2.6vw, 1.5rem);
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.pf-resource-embed {
+  max-width: 64rem;
+
+  iframe {
+    display: block;
+    width: 100%;
+    min-height: clamp(32rem, 72vw, 46rem);
+    border: 1px solid $color-border;
+    border-radius: $border-radius;
+    background: $color-section-bg;
+  }
+}
+
+.pf-resource-embed__toggle {
+  border: 1px dashed $color-secondary;
+  border-radius: $border-radius;
+  background: $color-section-bg;
+
+  &[open] {
+    background: $color-background;
+  }
+}
+
+.pf-resource-embed__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4rem;
+  padding: 1rem clamp(1rem, 2.6vw, 1.5rem);
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::after {
+    content: "+";
+    flex: 0 0 auto;
+    display: grid;
+    width: 1.75rem;
+    height: 1.75rem;
+    place-items: center;
+    border: 1px solid $color-secondary;
+    border-radius: 50%;
+    color: $color-button-primary-text;
+    background: $color-button-primary-bg;
+    font-weight: $font-weight-button;
+    line-height: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 0.2rem;
+  }
+}
+
+.pf-resource-embed__toggle[open] .pf-resource-embed__summary::after {
+  content: "-";
+}
+
+.pf-resource-embed__title {
+  display: block;
+  color: $color-heading;
+  font-family: $font-body;
+  font-size: $type-size-4;
+  font-weight: $font-weight-card-heading;
+  line-height: 1.2;
+}
+
+.pf-resource-embed__body {
+  padding: 0 clamp(1rem, 2.6vw, 1.5rem) clamp(1rem, 2.6vw, 1.5rem);
+}
+
+.pf-resource-embed__text {
+  max-width: 44rem;
+
+  p:last-child {
+    margin-bottom: 1rem;
+  }
+}
+
+.pf-resource-embed__fallback {
+  margin-top: 0.75rem;
+  color: $color-muted-text;
+  font-size: $type-size-6;
 }
 
 .pf-forest-detail {

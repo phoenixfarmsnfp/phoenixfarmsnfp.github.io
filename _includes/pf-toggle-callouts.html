@@ -1,0 +1,34 @@
+{% assign section = include.block | default: include.section %}
+{% assign items = section.items %}
+{% if section.data %}
+  {% assign items = site.data[section.data] %}
+{% endif %}
+
+{% if items %}
+<section class="pf-toggle-callouts{% if section.class %} {{ section.class }}{% endif %}">
+  {% if section.kicker or section.heading or section.text %}
+  <div class="pf-section__heading">
+    {% if section.kicker %}<p class="pf-kicker">{{ section.kicker }}</p>{% endif %}
+    {% if section.heading %}<h2>{{ section.heading }}</h2>{% endif %}
+    {% if section.text %}{{ section.text | markdownify }}{% endif %}
+  </div>
+  {% endif %}
+
+  <div class="pf-toggle-callouts__list">
+    {% for item in items %}
+      <details class="pf-toggle-callout">
+        <summary class="pf-toggle-callout__summary">
+          <span class="pf-toggle-callout__question">{{ item.question | default: item.heading }}</span>
+        </summary>
+        <div class="pf-toggle-callout__content">
+          {% if item.answer %}
+            {{ item.answer | markdownify }}
+          {% elsif item.content %}
+            {{ item.content | markdownify }}
+          {% endif %}
+        </div>
+      </details>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

@@ -27,6 +27,10 @@
     {% include pf-cta-band.html block=block class=block.class %}
   {% when "coming_soon" %}
     {% include pf-coming-soon.html block=block heading_id=block.heading_id %}
+  {% when "toggle_callouts" %}
+    {% include pf-toggle-callouts.html block=block %}
+  {% when "resource_embed" %}
+    {% include pf-resource-embed.html block=block %}
   {% when "events_list" %}
     {% include pf-events-list.html block=block %}
   {% when "forest_index" %}
