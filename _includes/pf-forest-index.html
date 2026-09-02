@@ -1,4 +1,11 @@
 {% assign section = include.block | default: include.section %}
+{% assign override = include.override %}
+{% assign featured_kicker = override.featured_kicker | default: section.featured_kicker %}
+{% assign featured_link_label = override.featured_link_label | default: section.featured_link_label | default: "Explore this forest" %}
+{% assign other_kicker = override.other_kicker | default: section.other_kicker %}
+{% assign other_heading = override.other_heading | default: section.other_heading %}
+{% assign coming_soon = override.coming_soon | default: section.coming_soon %}
+{% assign empty = override.empty | default: section.empty %}
 {% assign sorted_forests = site.forests | sort: "age" | reverse %}
 {% assign featured = sorted_forests | first %}
 
@@ -14,7 +21,7 @@
     {% endif %}
   </div>
   <div class="pf-forest-feature__body">
-    {% if section.featured_kicker %}<p class="pf-kicker">{{ section.featured_kicker }}</p>{% endif %}
+    {% if featured_kicker %}<p class="pf-kicker">{{ featured_kicker }}</p>{% endif %}
     <h2>{{ featured.title }}</h2>
     <dl class="pf-forest-facts">
       <div>
@@ -34,14 +41,14 @@
         <dd>{{ featured.plants | join: ", " }}</dd>
       </div>
     </dl>
-    {% if section.featured_link_label %}<span class="pf-link">{{ section.featured_link_label }}</span>{% endif %}
+    {% if featured_link_label %}<span class="pf-link">{{ featured_link_label }}</span>{% endif %}
   </div>
 </article>
 
 <section class="pf-section">
   <div class="pf-section__heading">
-    {% if section.other_kicker %}<p class="pf-kicker">{{ section.other_kicker }}</p>{% endif %}
-    {% if section.other_heading %}<h2>{{ section.other_heading }}</h2>{% endif %}
+    {% if other_kicker %}<p class="pf-kicker">{{ other_kicker }}</p>{% endif %}
+    {% if other_heading %}<h2>{{ other_heading }}</h2>{% endif %}
   </div>
 
   {% if sorted_forests.size > 1 %}
@@ -56,22 +63,22 @@
         <p class="pf-meta">{{ forest.age }} {% if forest.age == 1 %}year{% else %}years{% endif %}</p>
         <h3><a href="{{ forest.url | relative_url }}">{{ forest.title }}</a></h3>
         <p>{{ forest.address }}</p>
-        <a class="pf-link" href="{{ forest.url | relative_url }}">{{ section.featured_link_label | default: "Explore this forest" }}</a>
+        <a class="pf-link" href="{{ forest.url | relative_url }}">{{ featured_link_label }}</a>
       </div>
     </article>
     {% endfor %}
   </div>
   {% else %}
   <div class="pf-coming-soon">
-    {% if section.coming_soon.kicker %}<p class="pf-kicker">{{ section.coming_soon.kicker }}</p>{% endif %}
-    {% if section.coming_soon.heading %}<h3>{{ section.coming_soon.heading }}</h3>{% endif %}
-    {% if section.coming_soon.text %}<p>{{ section.coming_soon.text }}</p>{% endif %}
+    {% if coming_soon.kicker %}<p class="pf-kicker">{{ coming_soon.kicker }}</p>{% endif %}
+    {% if coming_soon.heading %}<h3>{{ coming_soon.heading }}</h3>{% endif %}
+    {% if coming_soon.text %}<p>{{ coming_soon.text }}</p>{% endif %}
   </div>
   {% endif %}
 </section>
 {% else %}
 <div class="pf-coming-soon">
-  {% if section.empty.kicker %}<p class="pf-kicker">{{ section.empty.kicker }}</p>{% endif %}
-  {% if section.empty.heading %}<h2>{{ section.empty.heading }}</h2>{% endif %}
+  {% if empty.kicker %}<p class="pf-kicker">{{ empty.kicker }}</p>{% endif %}
+  {% if empty.heading %}<h2>{{ empty.heading }}</h2>{% endif %}
 </div>
 {% endif %}

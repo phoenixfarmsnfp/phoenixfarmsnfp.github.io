@@ -1,10 +1,12 @@
 {% assign section = include.block | default: include.section %}
+{% assign override = include.override %}
+{% assign cards = override.cards | default: section.cards %}
 
 <section class="pf-home-gateway" aria-labelledby="home-explore-heading">
   <div class="pf-home-gateway__inner">
-    {% include pf-section-heading.html section=section heading_id="home-explore-heading" %}
+    {% include pf-section-heading.html section=section override=override heading_id="home-explore-heading" %}
     <div class="pf-home-gateway__grid">
-      {% for card in section.cards %}
+      {% for card in cards %}
       <article class="pf-home-card{% if card.class %} {{ card.class }}{% endif %}">
         <a class="pf-home-card__link" href="{{ card.url | relative_url }}" aria-label="{{ card.aria_label }}"></a>
         {% if card.image %}

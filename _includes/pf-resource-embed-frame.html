@@ -1,17 +1,24 @@
 {% assign section = include.section %}
+{% assign override = include.override %}
+{% assign heading = override.heading | default: section.heading %}
+{% assign text = override.text | default: section.text %}
+{% assign url = override.url | default: section.url %}
+{% assign iframe_title = override.iframe_title | default: section.iframe_title | default: heading %}
+{% assign link_label = override.link_label | default: section.link_label | default: "Open embedded resource" %}
+{% assign toggle = override.toggle | default: section.toggle %}
 
-{% if section.toggle and section.text %}
+{% if toggle and text %}
   <div class="pf-resource-embed__text">
-    {{ section.text | markdownify }}
+    {{ text | markdownify }}
   </div>
 {% endif %}
 
 <iframe
-  src="{{ section.url }}"
-  title="{{ section.iframe_title | default: section.heading | escape }}"
+  src="{{ url }}"
+  title="{{ iframe_title | escape }}"
   loading="lazy"
 ></iframe>
 
 <p class="pf-resource-embed__fallback">
-  <a href="{{ section.url }}" target="_blank" rel="noopener noreferrer">{{ section.link_label | default: "Open embedded resource" }}</a>
+  <a href="{{ url }}" target="_blank" rel="noopener noreferrer">{{ link_label }}</a>
 </p>

@@ -1,12 +1,18 @@
 {% assign feature = include.block | default: include.section | default: include.feature %}
+{% assign override = include.override %}
+{% assign kicker = override.kicker | default: feature.kicker %}
+{% assign heading = override.heading | default: feature.heading %}
+{% assign actions = override.actions | default: feature.actions %}
+{% assign image = override.image | default: feature.image %}
+{% assign image_alt = override.image_alt | default: feature.image_alt %}
 
 <section class="pf-section pf-donate-feature">
   <div>
-    {% if feature.kicker %}<p class="pf-kicker">{{ feature.kicker }}</p>{% endif %}
-    {% if feature.heading %}<h2>{{ feature.heading }}</h2>{% endif %}
-    {% include pf-actions.html actions=feature.actions %}
+    {% if kicker %}<p class="pf-kicker">{{ kicker }}</p>{% endif %}
+    {% if heading %}<h2>{{ heading }}</h2>{% endif %}
+    {% include pf-actions.html actions=actions %}
   </div>
   <div class="pf-feature-grid">
-    <img class="pf-donation-image" src="{{ feature.image | relative_url }}" alt="{{ feature.image_alt }}">
+    <img class="pf-donation-image" src="{{ image | relative_url }}" alt="{{ image_alt }}">
   </div>
 </section>

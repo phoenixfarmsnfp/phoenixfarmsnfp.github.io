@@ -4,7 +4,10 @@ permalink: /food-forest-model/
 layout: single
 author_profile: false
 sections:
-  - ref: food_forest_model_intro
+  - template: page_intro
+    kicker: "Our Work"
+    heading: "Food-forest Model"
+    text: "The theory behind the food-forest system."
   - type: resource_embed
     kicker: "Guilds"
     heading: "Permaculture: All About Guilds"

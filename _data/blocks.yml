@@ -1,240 +1,162 @@
-home_announcement:
-  type: announcement
-  aria_label: "Home page announcement"
-  items:
-    - text: "Stop by and grab some fruit!"
-      button_label: "Sign up"
-      use_tally: false
-      enabled: false
+templates:
+  announcement:
+    type: announcement
+    aria_label:
+    items:
+    class:
 
-home_hero:
-  type: home_hero
-  kicker: "Phoenix Farms Not-For-Profit"
-  heading: "We are a not-for-profit organization focused on establishing food forests in the Woodlawn, Hyde Park, and Washington Park areas."
-  image: "/assets/images/donate-image.jpg"
-  image_alt: "Ripening tomatoes and green leaves"
-  actions:
-    - label: "Join the Community"
-      use_tally: true
-    - label: "Our Forest"
-      url: "/our-forest/"
+  home_hero:
+    type: home_hero
+    kicker:
+    heading:
+    image:
+    image_alt:
+    actions:
 
-food_forest_quote:
-  type: quote
-  kicker: "Food forests"
-  heading: "Food forests are a sustainable and empowering way to give back to the communities around us."
+  quote:
+    type: quote
+    kicker:
+    heading:
 
-home_gateway:
-  type: home_gateway
-  kicker: "Explore Phoenix Farms"
-  heading: "Grow with us."
-  cards:
-    - kicker: "Our Forest"
-      heading: "First Presbyterian Church Forest"
-      text: "Visit our food forest!"
-      image: "/assets/images/forest_images/first-presbyterian-church-forest.jpg"
-      image_alt: "First Presbyterian Church Forest"
-      link_label: "Explore the forest"
-      url: "/our-forest/"
-      aria_label: "Visit Our Forest"
-    - kicker: "Learn"
-      heading: "Resources"
-      text: "Find information, educational materials, and practical resources from Phoenix Farms and our partners."
-      link_label: "Browse resources"
-      url: "/resources/"
-      aria_label: "Visit Learn resources"
-      class: "pf-home-card--learn"
-    - kicker: "Get Involved"
-      heading: "New dates coming soon."
-      text: "Workdays, gatherings, and community invitations will appear here when they are announced."
-      link_label: "Get involved"
-      url: "/events/"
-      aria_label: "Visit Get Involved"
-      class: "pf-home-card--events"
+  home_gateway:
+    type: home_gateway
+    kicker:
+    heading:
+    cards:
 
-donate_feature:
-  type: donate_feature
-  kicker: "Support the work"
-  heading: "With your donation, you can help provide Phoenix Farms fresh crops and resources to people throughout the Hyde Park area."
-  image: "/assets/images/tomat_cover.jpg"
-  image_alt: "Tomatoes growing at Phoenix Farms"
-  actions:
-    - use_donation: true
+  donate_feature:
+    type: donate_feature
+    kicker:
+    heading:
+    image:
+    image_alt:
+    actions:
 
-about_intro:
-  type: page_intro
-  heading_id: "mission-aims"
-  kicker: "About"
-  heading: "Mission & Aims"
-  text:
-    - "We are Phoenix Farms, a small nonprofit organization that maintains a food forest in Woodlawn. We’ve been operating for a few years now on God’s Little Acre, a lot on 64th and Kimbark, in partnership with First Presbyterian Church."
-    - "Phoenix Farms seeks to promote access to fresh, sustainably-grown fruits and vegetables for our local community. Our food forest is open to the public and we encourage everyone to pick and eat our produce **completely free and at any time.** Produce not picked by our community is donated to First Presbyterian’s Free Food Market. We continue to work to make our space a safe spot where neighbors can stop and learn about food production, native plants, and pollinators."
-  actions:
-    - label: "Join the Community"
-      use_tally: true
+  page_intro:
+    type: page_intro
+    heading_id:
+    kicker:
+    heading:
+    text:
+    actions:
+    class:
 
-hours_location:
-  type: visit_strip
-  kicker: "Hours & Location"
-  use_site_contact: true
-  action:
-    mailto_site_contact: true
+  visit_strip:
+    type: visit_strip
+    kicker:
+    heading:
+    text:
+    use_site_contact:
+    action:
 
-people:
-  type: people_section
-  heading_id: "our-team"
-  kicker: "Community"
-  heading: "Board members and contributors"
-  current_heading: "Current board members"
-  former_heading: "Former board members, contributors, and interns"
+  people_section:
+    type: people_section
+    heading_id:
+    kicker:
+    heading:
+    current_heading:
+    former_heading:
 
-partners:
-  type: partners_section
-  heading_id: "our-partners"
-  kicker: "Partners"
-  heading: "Our Partners"
+  partners_section:
+    type: partners_section
+    heading_id:
+    kicker:
+    heading:
 
-donate_cta_about:
-  type: cta_band
-  kicker: "Support the work"
-  heading: "We aim to make fresh produce accessible to all families in our community."
-  action:
-    use_donation: true
+  donate_hero:
+    type: donate_hero
+    kicker:
+    heading:
+    text:
+    image:
+    image_alt:
+    action:
+    class:
 
-donate_hero:
-  type: donate_hero
-  kicker: "Donations"
-  heading: "With your donation, you can help provide Phoenix Farms fresh crops and resources to people throughout the Hyde Park area."
-  text: "Your support helps Phoenix Farms NFP establish food forests and sustain community-centered growing spaces."
-  image: "/assets/images/donate-image.jpg"
-  image_alt: "Ripening tomatoes growing among green leaves"
-  action:
-    use_donation: true
+  card_grid:
+    type: card_grid
+    kicker:
+    heading:
+    cards:
+    grid_class:
 
-ways_to_give:
-  type: card_grid
-  kicker: "Ways to give"
-  heading: "Help the Food Forest keep growing."
-  cards:
-    - heading: "Fresh crops"
-      text: "Support the plants, soil, tools, and materials that help make produce available to the surrounding community."
-    - heading: "Community resources"
-      text: "Help Phoenix Farms maintain welcoming, educational, and useful growing spaces in Hyde Park and nearby neighborhoods."
-    - heading: "Seasonal projects"
-      text: "Contribute to planting days, maintenance, composting, signage, and community events throughout the year."
+  cta_band:
+    type: cta_band
+    kicker:
+    heading:
+    action:
+    class:
 
-donate_cta:
-  type: cta_band
-  kicker: "Support the work"
-  heading: "With your donation, you can help provide Phoenix Farms fresh crops and resources to people throughout the Hyde Park area."
-  action:
-    use_donation: true
-    class: "btn"
-
-resources_intro:
-  type: page_intro
-  kicker: "Resources"
-  heading: "Information for gardening, food-forests, and community engagement."
-  text: "This space will host useful information, educational resources, and content from Phoenix Farms and our community partners."
-
-generic_coming_soon:
-  type: coming_soon
-  kicker: "Coming Soon"
-  heading: "More details are coming soon."
-  text: "We are still building this part of the site. Check back soon for updates."
-
-food_forest_model_intro:
-  type: page_intro
-  kicker: "Our Work"
-  heading: "Food-forest Model"
-  text: "The theory behind the food-forest system."
-
-projects_intro:
-  type: page_intro
-  kicker: "Our Work"
-  heading: "Projects"
-  text: "A home for current and upcoming Phoenix Farms projects."
-
-events_intro:
-  type: page_intro
-  kicker: "Get Involved"
-  heading: "Gatherings, workdays, and community invitations."
-
-events_list:
-  type: events_list
-  empty:
-    kicker: "Events"
-    heading: "Come back soon!"
-    text: "New workdays, gatherings, and community invitations will appear here when they are announced."
-  past:
-    kicker: "Past Gatherings"
-    heading: "Prior events"
-
-volunteer_cta:
-  type: cta_band
-  kicker: "Become A Volunteer"
-  heading: "Help us make food accessible and sustainable to community members in the South Side area."
-  action:
-    label: "Join the Community"
-    use_tally: true
-
-donate_cta_quiet:
-  type: cta_band
-  class: "pf-cta-band--quiet"
-  kicker: "Support the work"
-  heading: "With your donation, you can help provide Phoenix Farms fresh crops and resources to people throughout the Hyde Park area."
-  action:
-    use_donation: true
-    class: "btn"
-
-forest_intro:
-  type: page_intro
-  kicker: "Our Forest"
-  heading: "Food forest(s)"
-  text: "The sites Phoenix Farms and our partners are developing together."
-
-forest_index:
-  type: forest_index
-  featured_kicker: "Featured Forest"
-  featured_link_label: "Explore this forest"
-  other_kicker: "Other Sites"
-  other_heading: "More places to grow"
   coming_soon:
-    kicker: "Coming Soon"
-    heading: "More forest sites are taking shape."
-    text: "New partner sites will appear here as they develop."
-  empty:
-    kicker: "Coming Soon"
-    heading: "More sites are taking shape."
+    type: coming_soon
+    heading_id:
+    kicker:
+    heading:
+    text:
 
-blog_intro:
-  type: page_intro
-  kicker: "Living Project Blog"
-  heading: "Updates"
-  text: "Planting notes, harvest observations, community events, internship research, and seasonal updates from Phoenix Farms."
+  toggle_callouts:
+    type: toggle_callouts
+    kicker:
+    heading:
+    text:
+    items:
+    data:
+    class:
 
-blog_index:
-  type: blog_index
-  filters:
-    kicker: "Find Posts"
-    heading: "Filter the blog"
-    year_label: "Year"
-    year_all_label: "All years"
-    tag_label: "Tag"
-    tag_all_label: "All tags"
-    clear_label: "Clear filters"
-    browse_label: "Browse the blog"
-    archive_label: "Browse by year"
-    tags_label: "Browse by tag"
-  featured:
-    kicker: "Featured / Most Recent"
-    link_label: "Read More"
-  archive:
-    kicker: "Archive"
-    heading: "Older posts"
-    link_label: "Read More"
-  empty:
-    kicker: "No Matches"
-    heading: "No posts match those filters."
-    text: "Try another year or tag, or clear the filters to see everything."
-  no_posts: "No Living Project Blog posts have been added yet."
+  resource_embed:
+    type: resource_embed
+    heading_id:
+    kicker:
+    heading:
+    text:
+    url:
+    iframe_title:
+    link_label:
+    toggle:
+    open:
+    class:
+
+  events_list:
+    type: events_list
+    empty:
+    past:
+
+  forest_index:
+    type: forest_index
+    featured_kicker:
+    featured_link_label:
+    other_kicker:
+    other_heading:
+    coming_soon:
+    empty:
+
+  blog_index:
+    type: blog_index
+    filters:
+    featured:
+    archive:
+    empty:
+    no_posts:
+
+presets:
+  donate_cta:
+    template: cta_band
+    kicker: "Support the work"
+    heading: "With your donation, you can help provide Phoenix Farms fresh crops and resources to people throughout the Hyde Park area."
+    action:
+      use_donation: true
+
+  donate_cta_quiet:
+    template: cta_band
+    class: "pf-cta-band--quiet"
+    kicker: "Support the work"
+    heading: "With your donation, you can help provide Phoenix Farms fresh crops and resources to people throughout the Hyde Park area."
+    action:
+      use_donation: true
+      class: "btn"
+
+  generic_coming_soon:
+    template: coming_soon
+    kicker: "Coming Soon"
+    heading: "More details are coming soon."
+    text: "We are still building this part of the site. Check back soon for updates."

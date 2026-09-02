@@ -1,17 +1,23 @@
 {% assign intro = include.block | default: include.section | default: include.intro %}
-{% assign intro_class = include.class | default: "" %}
+{% assign override = include.override %}
+{% assign intro_class = override.class | default: intro.class | default: include.class | default: "" %}
+{% assign heading_id = override.heading_id | default: intro.heading_id %}
+{% assign kicker = override.kicker | default: intro.kicker %}
+{% assign heading = override.heading | default: intro.heading %}
+{% assign text = override.text | default: intro.text %}
+{% assign actions = override.actions | default: intro.actions %}
 
-<section class="pf-page-intro{% if intro_class %} {{ intro_class }}{% endif %}"{% if intro.heading_id %} id="{{ intro.heading_id }}"{% endif %}>
-  {% if intro.kicker %}<p class="pf-kicker">{{ intro.kicker }}</p>{% endif %}
-  {% if intro.heading %}<h1>{{ intro.heading }}</h1>{% endif %}
-  {% if intro.text %}
-    {% if intro.text.first %}
-      {% for paragraph in intro.text %}
+<section class="pf-page-intro{% if intro_class %} {{ intro_class }}{% endif %}"{% if heading_id %} id="{{ heading_id }}"{% endif %}>
+  {% if kicker %}<p class="pf-kicker">{{ kicker }}</p>{% endif %}
+  {% if heading %}<h1>{{ heading }}</h1>{% endif %}
+  {% if text %}
+    {% if text.first %}
+      {% for paragraph in text %}
         {{ paragraph | markdownify }}
       {% endfor %}
     {% else %}
-      {{ intro.text | markdownify }}
+      {{ text | markdownify }}
     {% endif %}
   {% endif %}
-  {% include pf-actions.html actions=intro.actions %}
+  {% include pf-actions.html actions=actions %}
 </section>

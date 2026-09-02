@@ -1,4 +1,7 @@
 {% assign section = include.block | default: include.section %}
+{% assign override = include.override %}
+{% assign empty = override.empty | default: section.empty %}
+{% assign past = override.past | default: section.past %}
 {% assign sorted_events = site.events | sort: "date" | reverse %}
 {% assign today_key = site.time | date: "%Y%m%d" | plus: 0 %}
 {% assign upcoming_count = 0 %}
@@ -26,9 +29,9 @@
 
   {% if upcoming_count == 0 %}
   <div class="pf-coming-soon">
-    {% if section.empty.kicker %}<p class="pf-kicker">{{ section.empty.kicker }}</p>{% endif %}
-    {% if section.empty.heading %}<h2>{{ section.empty.heading }}</h2>{% endif %}
-    {% if section.empty.text %}<p>{{ section.empty.text }}</p>{% endif %}
+    {% if empty.kicker %}<p class="pf-kicker">{{ empty.kicker }}</p>{% endif %}
+    {% if empty.heading %}<h2>{{ empty.heading }}</h2>{% endif %}
+    {% if empty.text %}<p>{{ empty.text }}</p>{% endif %}
   </div>
   {% endif %}
 </section>
@@ -43,8 +46,8 @@
 {% if prior_count > 0 %}
 <section class="pf-section" aria-labelledby="prior-events-heading">
   <div class="pf-section__heading">
-    {% if section.past.kicker %}<p class="pf-kicker">{{ section.past.kicker }}</p>{% endif %}
-    {% if section.past.heading %}<h2 id="prior-events-heading">{{ section.past.heading }}</h2>{% endif %}
+    {% if past.kicker %}<p class="pf-kicker">{{ past.kicker }}</p>{% endif %}
+    {% if past.heading %}<h2 id="prior-events-heading">{{ past.heading }}</h2>{% endif %}
   </div>
   <div class="pf-events-list">
     {% for event in sorted_events %}

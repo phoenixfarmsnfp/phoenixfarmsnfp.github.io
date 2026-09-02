@@ -1,40 +1,42 @@
 {% assign block = include.block %}
+{% assign override = include.override %}
+{% assign block_type = override.type | default: block.type | default: override.template | default: block.template %}
 
-{% case block.type %}
+{% case block_type %}
   {% when "announcement" %}
-    {% include announcements.html block=block %}
+    {% include announcements.html block=block override=override %}
   {% when "home_hero" %}
-    {% include pf-home-hero.html block=block %}
+    {% include pf-home-hero.html block=block override=override %}
   {% when "quote" %}
-    {% include pf-quote-section.html block=block %}
+    {% include pf-quote-section.html block=block override=override %}
   {% when "home_gateway" %}
-    {% include pf-home-gateway.html block=block %}
+    {% include pf-home-gateway.html block=block override=override %}
   {% when "donate_feature" %}
-    {% include pf-donate-feature.html block=block %}
+    {% include pf-donate-feature.html block=block override=override %}
   {% when "page_intro" %}
-    {% include pf-page-intro.html block=block class=block.class %}
+    {% include pf-page-intro.html block=block override=override %}
   {% when "visit_strip" %}
-    {% include pf-visit-strip.html block=block %}
+    {% include pf-visit-strip.html block=block override=override %}
   {% when "people_section" %}
-    {% include pf-people-section.html block=block %}
+    {% include pf-people-section.html block=block override=override %}
   {% when "partners_section" %}
-    {% include pf-partners-section.html block=block %}
+    {% include pf-partners-section.html block=block override=override %}
   {% when "donate_hero" %}
-    {% include pf-donate-hero.html block=block %}
+    {% include pf-donate-hero.html block=block override=override %}
   {% when "card_grid" %}
-    {% include pf-card-grid.html block=block grid_class=block.grid_class %}
+    {% include pf-card-grid.html block=block override=override %}
   {% when "cta_band" %}
-    {% include pf-cta-band.html block=block class=block.class %}
+    {% include pf-cta-band.html block=block override=override %}
   {% when "coming_soon" %}
-    {% include pf-coming-soon.html block=block heading_id=block.heading_id %}
+    {% include pf-coming-soon.html block=block override=override %}
   {% when "toggle_callouts" %}
-    {% include pf-toggle-callouts.html block=block %}
+    {% include pf-toggle-callouts.html block=block override=override %}
   {% when "resource_embed" %}
-    {% include pf-resource-embed.html block=block %}
+    {% include pf-resource-embed.html block=block override=override %}
   {% when "events_list" %}
-    {% include pf-events-list.html block=block %}
+    {% include pf-events-list.html block=block override=override %}
   {% when "forest_index" %}
-    {% include pf-forest-index.html block=block %}
+    {% include pf-forest-index.html block=block override=override %}
   {% when "blog_index" %}
-    {% include pf-blog-index.html block=block %}
+    {% include pf-blog-index.html block=block override=override %}
 {% endcase %}

@@ -4,8 +4,11 @@ permalink: /resources/
 layout: single
 author_profile: false
 sections:
-  - ref: resources_intro
-  - type: resource_embed
+  - template: page_intro
+    kicker: "Resources"
+    heading: "Information for gardening, food-forests, and community engagement."
+    text: "This space will host useful information, educational resources, and content from Phoenix Farms and our community partners."
+  - template: resource_embed
     kicker: "Map"
     heading: "Falling Fruit Map"
     text: "Input addresses near you to see what local edible plants are already nearby."

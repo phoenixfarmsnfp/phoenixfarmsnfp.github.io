@@ -1,10 +1,12 @@
 {% assign section = include.block | default: include.section %}
-{% assign grid_class = include.grid_class | default: "pf-card-grid" %}
+{% assign override = include.override %}
+{% assign cards = override.cards | default: section.cards %}
+{% assign grid_class = override.grid_class | default: section.grid_class | default: include.grid_class | default: "pf-card-grid" %}
 
 <section class="pf-section">
-  {% include pf-section-heading.html section=section %}
+  {% include pf-section-heading.html section=section override=override %}
   <div class="{{ grid_class }}">
-    {% for card in section.cards %}
+    {% for card in cards %}
     <article class="pf-card{% if card.class %} {{ card.class }}{% endif %}">
       {% if card.kicker %}<p class="pf-kicker">{{ card.kicker }}</p>{% endif %}
       {% if card.heading %}<h3>{{ card.heading }}</h3>{% endif %}

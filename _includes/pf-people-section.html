@@ -1,12 +1,16 @@
 {% assign section = include.block | default: include.section %}
+{% assign override = include.override %}
+{% assign heading_id = override.heading_id | default: section.heading_id %}
+{% assign current_heading = override.current_heading | default: section.current_heading | default: "Current board members" %}
+{% assign former_heading = override.former_heading | default: section.former_heading | default: "Former board members, contributors, and interns" %}
 {% assign current_people = site.data.people | where: "group", "current_board" %}
 {% assign former_people = site.data.people | where: "group", "former" %}
 
-<section class="pf-section"{% if section.heading_id %} id="{{ section.heading_id }}"{% endif %}>
-  {% include pf-section-heading.html section=section %}
+<section class="pf-section"{% if heading_id %} id="{{ heading_id }}"{% endif %}>
+  {% include pf-section-heading.html section=section override=override %}
   {% if current_people.size > 0 %}
   <div class="pf-people-section">
-    <h3>{{ section.current_heading | default: "Current board members" }}</h3>
+    <h3>{{ current_heading }}</h3>
     <div class="pf-people-grid">
       {% for person in current_people %}
       <article class="pf-person">
@@ -26,7 +30,7 @@
 
   {% if former_people.size > 0 %}
   <div class="pf-people-section">
-    <h3>{{ section.former_heading | default: "Former board members, contributors, and interns" }}</h3>
+    <h3>{{ former_heading }}</h3>
     <div class="pf-people-grid">
       {% for person in former_people %}
       <article class="pf-person">

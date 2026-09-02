@@ -1,17 +1,23 @@
 {% assign visit = include.block | default: include.section | default: include.visit %}
+{% assign override = include.override %}
+{% assign kicker = override.kicker | default: visit.kicker %}
+{% assign heading = override.heading | default: visit.heading %}
+{% assign text = override.text | default: visit.text %}
+{% assign use_site_contact = override.use_site_contact | default: visit.use_site_contact %}
+{% assign action = override.action | default: visit.action %}
 
 <section class="pf-section pf-visit-strip">
   <div>
-    {% if visit.kicker %}<p class="pf-kicker">{{ visit.kicker }}</p>{% endif %}
-    {% if visit.use_site_contact %}
+    {% if kicker %}<p class="pf-kicker">{{ kicker }}</p>{% endif %}
+    {% if use_site_contact %}
       <h2>{{ site.contact.address }}</h2>
       <p>{{ site.contact.location_note }} {{ site.contact.hours }}</p>
     {% else %}
-      {% if visit.heading %}<h2>{{ visit.heading }}</h2>{% endif %}
-      {% if visit.text %}<p>{{ visit.text }}</p>{% endif %}
+      {% if heading %}<h2>{{ heading }}</h2>{% endif %}
+      {% if text %}<p>{{ text }}</p>{% endif %}
     {% endif %}
   </div>
-  {% if visit.action %}
-    {% include pf-button.html action=visit.action %}
+  {% if action %}
+    {% include pf-button.html action=action %}
   {% endif %}
 </section>

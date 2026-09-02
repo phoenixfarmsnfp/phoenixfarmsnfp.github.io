@@ -1,11 +1,16 @@
 {% assign sections = include.sections %}
 {% for item in sections %}
   {% if item.ref %}
-    {% assign block = site.data.blocks[item.ref] %}
+    {% assign block = site.data.blocks.presets[item.ref] | default: site.data.blocks[item.ref] %}
+    {% assign override = item %}
+  {% elsif item.template %}
+    {% assign block = site.data.blocks.templates[item.template] | default: item %}
+    {% assign override = item %}
   {% else %}
     {% assign block = item %}
+    {% assign override = nil %}
   {% endif %}
   {% if block %}
-    {% include pf-section.html block=block %}
+    {% include pf-section.html block=block override=override %}
   {% endif %}
 {% endfor %}

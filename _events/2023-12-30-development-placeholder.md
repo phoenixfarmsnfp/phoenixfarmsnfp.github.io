@@ -1,8 +1,8 @@
 ---
 title: "TBA"
-date: 2023-12-30
-time: "9:45 AM - 10:45 AM"
-description: "We are still under development! Contact Phoenix Farms to get involved."
+date: 2026-09-15
+time: "10:00AM-1:00PM"
+description: "Placeholder date for upcoming tree-planting workday!"
 registration_url: "mailto:phoenixfarms.nfp@gmail.com"
 link_label: "Contact Phoenix Farms"
 ---

@@ -1,4 +1,10 @@
 {% assign section = include.block | default: include.section %}
+{% assign override = include.override %}
+{% assign filters = override.filters | default: section.filters %}
+{% assign featured_options = override.featured | default: section.featured %}
+{% assign archive = override.archive | default: section.archive %}
+{% assign empty = override.empty | default: section.empty %}
+{% assign no_posts = override.no_posts | default: section.no_posts | default: "No Living Project Blog posts have been added yet." %}
 {% assign sorted_posts = site.posts | sort: "date" | reverse %}
 {% assign featured = sorted_posts | first %}
 {% assign posts_by_year = sorted_posts | group_by_exp: "post", "post.date | date: '%Y'" %}
@@ -8,35 +14,35 @@
 {% assign featured_thumbnail = site.static_files | where: "path", featured.thumbnail | first %}
 <section class="pf-blog-filters" aria-labelledby="blog-filter-heading">
   <div>
-    {% if section.filters.kicker %}<p class="pf-kicker">{{ section.filters.kicker }}</p>{% endif %}
-    {% if section.filters.heading %}<h2 id="blog-filter-heading">{{ section.filters.heading }}</h2>{% endif %}
+    {% if filters.kicker %}<p class="pf-kicker">{{ filters.kicker }}</p>{% endif %}
+    {% if filters.heading %}<h2 id="blog-filter-heading">{{ filters.heading }}</h2>{% endif %}
   </div>
   <div class="pf-blog-filters__controls">
     <label for="blog-year-filter">
-      {{ section.filters.year_label | default: "Year" }}
+      {{ filters.year_label | default: "Year" }}
       <select id="blog-year-filter">
-        <option value="">{{ section.filters.year_all_label | default: "All years" }}</option>
+        <option value="">{{ filters.year_all_label | default: "All years" }}</option>
         {% for year in posts_by_year %}
         <option value="{{ year.name }}">{{ year.name }}</option>
         {% endfor %}
       </select>
     </label>
     <label for="blog-tag-filter">
-      {{ section.filters.tag_label | default: "Tag" }}
+      {{ filters.tag_label | default: "Tag" }}
       <select id="blog-tag-filter">
-        <option value="">{{ section.filters.tag_all_label | default: "All tags" }}</option>
+        <option value="">{{ filters.tag_all_label | default: "All tags" }}</option>
         {% for tag in sorted_tags %}
         <option value="{{ tag[0] | downcase | escape }}">{{ tag[0] }}</option>
         {% endfor %}
       </select>
     </label>
-    <button class="btn pf-blog-filters__clear" id="blog-filter-clear" type="button">{{ section.filters.clear_label | default: "Clear filters" }}</button>
+    <button class="btn pf-blog-filters__clear" id="blog-filter-clear" type="button">{{ filters.clear_label | default: "Clear filters" }}</button>
   </div>
   <p class="pf-blog-filters__status" id="blog-filter-status" aria-live="polite"></p>
   <noscript>
-    <nav class="pf-blog-tools" aria-label="{{ section.filters.browse_label | default: 'Browse the blog' }}">
-      <a class="btn" href="{{ '/blog/archive/' | relative_url }}">{{ section.filters.archive_label | default: "Browse by year" }}</a>
-      <a class="btn" href="{{ '/blog/tags/' | relative_url }}">{{ section.filters.tags_label | default: "Browse by tag" }}</a>
+    <nav class="pf-blog-tools" aria-label="{{ filters.browse_label | default: 'Browse the blog' }}">
+      <a class="btn" href="{{ '/blog/archive/' | relative_url }}">{{ filters.archive_label | default: "Browse by year" }}</a>
+      <a class="btn" href="{{ '/blog/tags/' | relative_url }}">{{ filters.tags_label | default: "Browse by tag" }}</a>
     </nav>
   </noscript>
 </section>
@@ -48,18 +54,18 @@
   </a>
   {% endif %}
   <div class="pf-featured-post__body">
-    {% if section.featured.kicker %}<p class="pf-kicker">{{ section.featured.kicker }}</p>{% endif %}
+    {% if featured_options.kicker %}<p class="pf-kicker">{{ featured_options.kicker }}</p>{% endif %}
     <h2><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h2>
     <p class="pf-meta">{{ featured.date | date: "%B %-d, %Y" }}{% if featured.author %} by {{ featured.author }}{% endif %}</p>
     <p>{{ featured.excerpt | strip_html | truncatewords: 55 }}</p>
-    <a class="pf-link" href="{{ featured.url | relative_url }}">{{ section.featured.link_label | default: "Read More" }}</a>
+    <a class="pf-link" href="{{ featured.url | relative_url }}">{{ featured_options.link_label | default: "Read More" }}</a>
   </div>
 </section>
 
 <section class="pf-section">
   <div class="pf-section__heading">
-    {% if section.archive.kicker %}<p class="pf-kicker">{{ section.archive.kicker }}</p>{% endif %}
-    {% if section.archive.heading %}<h2>{{ section.archive.heading }}</h2>{% endif %}
+    {% if archive.kicker %}<p class="pf-kicker">{{ archive.kicker }}</p>{% endif %}
+    {% if archive.heading %}<h2>{{ archive.heading }}</h2>{% endif %}
   </div>
   <div class="pf-card-grid pf-card-grid--posts">
     {% for post in sorted_posts offset:1 %}
@@ -74,18 +80,18 @@
         <p class="pf-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
         <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
         <p>{{ post.excerpt | strip_html | truncatewords: 28 }}</p>
-        <a class="pf-link" href="{{ post.url | relative_url }}">{{ section.archive.link_label | default: "Read More" }}</a>
+        <a class="pf-link" href="{{ post.url | relative_url }}">{{ archive.link_label | default: "Read More" }}</a>
       </div>
     </article>
     {% endfor %}
   </div>
   <div class="pf-coming-soon pf-blog-filters__empty" id="blog-filter-empty" hidden>
-    {% if section.empty.kicker %}<p class="pf-kicker">{{ section.empty.kicker }}</p>{% endif %}
-    {% if section.empty.heading %}<h3>{{ section.empty.heading }}</h3>{% endif %}
-    {% if section.empty.text %}<p>{{ section.empty.text }}</p>{% endif %}
+    {% if empty.kicker %}<p class="pf-kicker">{{ empty.kicker }}</p>{% endif %}
+    {% if empty.heading %}<h3>{{ empty.heading }}</h3>{% endif %}
+    {% if empty.text %}<p>{{ empty.text }}</p>{% endif %}
   </div>
 </section>
 <script src="{{ '/assets/js/blog-filter.js' | relative_url }}" defer></script>
 {% else %}
-<p>{{ section.no_posts | default: "No Living Project Blog posts have been added yet." }}</p>
+<p>{{ no_posts }}</p>
 {% endif %}

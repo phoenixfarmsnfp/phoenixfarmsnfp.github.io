@@ -1,7 +1,9 @@
 {% assign section = include.block | default: include.section %}
+{% assign override = include.override %}
+{% assign heading_id = override.heading_id | default: section.heading_id %}
 
-<section class="pf-section"{% if section.heading_id %} id="{{ section.heading_id }}"{% endif %}>
-  {% include pf-section-heading.html section=section %}
+<section class="pf-section"{% if heading_id %} id="{{ heading_id }}"{% endif %}>
+  {% include pf-section-heading.html section=section override=override %}
   <div class="pf-card-grid">
     {% for partner in site.data.partners %}
     <article class="pf-card">

@@ -1,16 +1,22 @@
 {% assign section = include.block | default: include.section %}
-{% assign items = section.items %}
-{% if section.data %}
-  {% assign items = site.data[section.data] %}
+{% assign override = include.override %}
+{% assign class = override.class | default: section.class %}
+{% assign kicker = override.kicker | default: section.kicker %}
+{% assign heading = override.heading | default: section.heading %}
+{% assign text = override.text | default: section.text %}
+{% assign data = override.data | default: section.data %}
+{% assign items = override.items | default: section.items %}
+{% if data %}
+  {% assign items = site.data[data] %}
 {% endif %}
 
 {% if items %}
-<section class="pf-toggle-callouts{% if section.class %} {{ section.class }}{% endif %}">
-  {% if section.kicker or section.heading or section.text %}
+<section class="pf-toggle-callouts{% if class %} {{ class }}{% endif %}">
+  {% if kicker or heading or text %}
   <div class="pf-section__heading">
-    {% if section.kicker %}<p class="pf-kicker">{{ section.kicker }}</p>{% endif %}
-    {% if section.heading %}<h2>{{ section.heading }}</h2>{% endif %}
-    {% if section.text %}{{ section.text | markdownify }}{% endif %}
+    {% if kicker %}<p class="pf-kicker">{{ kicker }}</p>{% endif %}
+    {% if heading %}<h2>{{ heading }}</h2>{% endif %}
+    {% if text %}{{ text | markdownify }}{% endif %}
   </div>
   {% endif %}
 

@@ -1,29 +1,39 @@
 {% assign section = include.block | default: include.section %}
-{% assign heading_id = section.heading_id | default: section.heading | slugify %}
+{% assign override = include.override %}
+{% assign heading = override.heading | default: section.heading %}
+{% assign heading_id = override.heading_id | default: section.heading_id | default: heading | slugify %}
+{% assign kicker = override.kicker | default: section.kicker %}
+{% assign text = override.text | default: section.text %}
+{% assign url = override.url | default: section.url %}
+{% assign iframe_title = override.iframe_title | default: section.iframe_title %}
+{% assign link_label = override.link_label | default: section.link_label %}
+{% assign toggle = override.toggle | default: section.toggle %}
+{% assign open = override.open | default: section.open %}
+{% assign class = override.class | default: section.class %}
 
-{% if section.url %}
-<section class="pf-resource-embed{% if section.class %} {{ section.class }}{% endif %}" aria-labelledby="{{ heading_id }}">
-  {% if section.toggle %}
-    <details class="pf-resource-embed__toggle"{% if section.open %} open{% endif %}>
+{% if url %}
+<section class="pf-resource-embed{% if class %} {{ class }}{% endif %}" aria-labelledby="{{ heading_id }}">
+  {% if toggle %}
+    <details class="pf-resource-embed__toggle"{% if open %} open{% endif %}>
       <summary class="pf-resource-embed__summary">
         <span>
-          {% if section.kicker %}<span class="pf-kicker">{{ section.kicker }}</span>{% endif %}
-          {% if section.heading %}<span id="{{ heading_id }}" class="pf-resource-embed__title">{{ section.heading }}</span>{% endif %}
+          {% if kicker %}<span class="pf-kicker">{{ kicker }}</span>{% endif %}
+          {% if heading %}<span id="{{ heading_id }}" class="pf-resource-embed__title">{{ heading }}</span>{% endif %}
         </span>
       </summary>
 
       <div class="pf-resource-embed__body">
-        {% include pf-resource-embed-frame.html section=section %}
+        {% include pf-resource-embed-frame.html section=section override=override %}
       </div>
     </details>
   {% else %}
     <div class="pf-section__heading">
-      {% if section.kicker %}<p class="pf-kicker">{{ section.kicker }}</p>{% endif %}
-      {% if section.heading %}<h2 id="{{ heading_id }}">{{ section.heading }}</h2>{% endif %}
-      {% if section.text %}{{ section.text | markdownify }}{% endif %}
+      {% if kicker %}<p class="pf-kicker">{{ kicker }}</p>{% endif %}
+      {% if heading %}<h2 id="{{ heading_id }}">{{ heading }}</h2>{% endif %}
+      {% if text %}{{ text | markdownify }}{% endif %}
     </div>
 
-    {% include pf-resource-embed-frame.html section=section %}
+    {% include pf-resource-embed-frame.html section=section override=override %}
   {% endif %}
 </section>
 {% endif %}

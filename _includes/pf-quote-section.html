@@ -1,8 +1,11 @@
 {% assign quote = include.block | default: include.section | default: include.quote %}
+{% assign override = include.override %}
+{% assign kicker = override.kicker | default: quote.kicker %}
+{% assign heading = override.heading | default: quote.heading %}
 
 <section class="pf-section pf-section--quote">
   <div>
-    {% if quote.kicker %}<p class="pf-kicker">{{ quote.kicker }}</p>{% endif %}
-    {% if quote.heading %}<h2>{{ quote.heading }}</h2>{% endif %}
+    {% if kicker %}<p class="pf-kicker">{{ kicker }}</p>{% endif %}
+    {% if heading %}<h2>{{ heading }}</h2>{% endif %}
   </div>
 </section>

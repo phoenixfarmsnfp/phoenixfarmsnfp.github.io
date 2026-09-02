@@ -1,13 +1,20 @@
 {% assign hero = include.block | default: include.section | default: include.hero %}
+{% assign override = include.override %}
+{% assign kicker = override.kicker | default: hero.kicker %}
+{% assign heading = override.heading | default: hero.heading %}
+{% assign text = override.text | default: hero.text %}
+{% assign action = override.action | default: hero.action %}
+{% assign image = override.image | default: hero.image %}
+{% assign image_alt = override.image_alt | default: hero.image_alt %}
 
 <section class="pf-page-intro pf-donate-hero">
   <div class="pf-donate-hero__content">
-    {% if hero.kicker %}<p class="pf-kicker">{{ hero.kicker }}</p>{% endif %}
-    {% if hero.heading %}<h1>{{ hero.heading }}</h1>{% endif %}
-    {% if hero.text %}<p>{{ hero.text }}</p>{% endif %}
-    {% if hero.action %}{% include pf-button.html action=hero.action %}{% endif %}
+    {% if kicker %}<p class="pf-kicker">{{ kicker }}</p>{% endif %}
+    {% if heading %}<h1>{{ heading }}</h1>{% endif %}
+    {% if text %}<p>{{ text }}</p>{% endif %}
+    {% if action %}{% include pf-button.html action=action %}{% endif %}
   </div>
   <div class="pf-donate-hero__media">
-    <img src="{{ hero.image | relative_url }}" alt="{{ hero.image_alt }}">
+    <img src="{{ image | relative_url }}" alt="{{ image_alt }}">
   </div>
 </section>
