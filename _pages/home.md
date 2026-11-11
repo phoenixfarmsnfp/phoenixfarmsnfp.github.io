@@ -20,7 +20,7 @@ sections:
       - label: "Join the Community"
         use_tally: true
       - label: "Our Forest"
-        url: "/our-forest/"
+        url: "/our-work/#our-forest"
   - template: quote
     kicker: "Food forests"
     heading: "Food forests are a sustainable and empowering way to give back to the communities around us."
@@ -34,7 +34,7 @@ sections:
         image: "/assets/images/forest_images/first-presbyterian-church-forest.jpg"
         image_alt: "First Presbyterian Church Forest"
         link_label: "Explore the forest"
-        url: "/our-forest/"
+        url: "/our-work/#our-forest"
         aria_label: "Visit Our Forest"
       - kicker: "Learn"
         heading: "Resources"

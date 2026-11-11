@@ -1,14 +1,7 @@
 ---
 title: "Projects"
 permalink: /projects/
-layout: single
-author_profile: false
-sections:
-  - template: page_intro
-    kicker: "Our Work"
-    heading: "Projects"
-    text: "A home for current and upcoming Phoenix Farms projects."
-  - ref: generic_coming_soon
+layout: redirect
+redirect_to: /our-work/#projects
+sitemap: false
 ---
-
-{% include pf-render-sections.html sections=page.sections %}

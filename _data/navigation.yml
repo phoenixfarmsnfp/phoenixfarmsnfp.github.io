@@ -10,14 +10,14 @@ main:
       - title: "Our Partners"
         url: /about/#our-partners
   - title: "Our Work"
-    dropdown_only: true
+    url: /our-work/
     children:
       - title: "Our Forest"
-        url: /our-forest/
+        url: /our-work/#our-forest
       - title: "Food-forest Model"
-        url: /food-forest-model/
+        url: /our-work/#food-forest-model
       - title: "Projects"
-        url: /projects/
+        url: /our-work/#projects
   - title: "Get Involved"
     url: /events/
   - title: "Resources"

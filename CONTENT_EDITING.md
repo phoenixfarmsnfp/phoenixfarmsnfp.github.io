@@ -15,12 +15,12 @@ Most page wording now lives directly in the page's `sections:` list:
 - About page: `_pages/about.md`
 - Resources page: `_pages/resources.md`
 - Get Involved page: `_pages/events.md`
-- Forest index page: `_pages/our-forest.md`
-- Food-forest Model page: `_pages/food-forest-model.md`
-- Projects page: `_pages/projects.md`
+- Our Work page (Our Forest, Food-forest Model, and Projects sections): `_pages/our-work.md`
 - Blog landing page: `_pages/blog.md`
 
 Edit values like `kicker:`, `heading:`, `text:`, `cards:`, `image:`, `image_alt:`, `actions:`, and `action:` in the relevant page file.
+
+The Our Work dropdown links to `heading_id:` anchors in `_pages/our-work.md`, following the About page's structure. Keep those IDs aligned with `_data/navigation.yml`. The former `/our-forest/`, `/food-forest-model/`, and `/projects/` pages redirect to their corresponding sections; edit the content in `_pages/our-work.md`.
 
 ## Templates
 
